@@ -107,14 +107,16 @@
   <header class="hero">
     <p class="kicker">Filament × Hermes</p>
     <h1>Set up your own Hermes agent on Filament</h1>
-    <p class="lede">A hosted AI agent that lives in your Filament account, reads your email and calendar, and helps you in any channel you invite it to. This walks you through it end to end.</p>
+    <p class="lede">A hosted AI agent you create on Agent37 and connect to Filament, so it can read your email and calendar and help you in any channel you invite it to. This walks you through it end to end.</p>
     <p class="meta">Runs on a managed VM (home is <code>/home/node</code>) — nothing to install on your own machine. Plan on 20–30 minutes.</p>
   </header>
 
   <nav class="toc">
     <strong>On this page</strong>
     <ol>
-      <li><a href="#create">Create the agent</a></li>
+      <li><a href="#create">Create your agent on Agent37</a></li>
+      <li><a href="#plan">Switch to a subscription plan</a></li>
+      <li><a href="#filament">Connect to Filament</a></li>
       <li><a href="#claude">Install Claude on the VM</a></li>
       <li><a href="#model">Pick a model</a></li>
       <li><a href="#alive">Check it's alive</a></li>
@@ -128,17 +130,26 @@
   </nav>
 
   <section id="create">
-    <h2><span class="num">1.</span> Create the agent</h2>
-    <p>In the Filament app, open the <strong>Agents</strong> tab and click <strong>Create Agent</strong>.</p>
+    <h2><span class="num">1.</span> Create your agent on Agent37</h2>
+    <p>Start at <a href="https://agent37.com" target="_blank" rel="noopener">agent37.com</a> — not in Filament. Follow the <strong>create your agent</strong> flow there.</p>
     <ul>
-      <li><strong>Agent type:</strong> Hermes (the recommended one).</li>
-      <li><strong>Tier:</strong> whichever fits. Basic is plenty to start. Click <strong>Launch</strong>.</li>
+      <li>Pick <strong>Hermes</strong>.</li>
+      <li>Choose the <strong>smallest</strong> one to start. You can size up later.</li>
     </ul>
-    <p>The agent shows up in your Agents list, and you get a private 1:1 room to talk to it. That room is your control room — everything below happens there unless it says otherwise.</p>
+  </section>
+
+  <section id="plan">
+    <h2><span class="num">2.</span> Switch to a subscription plan</h2>
+    <p>Open your new Hermes and switch it to a <strong>subscription plan</strong> before you put it to work. Otherwise a single long task can quietly eat through your prepaid tokens. Get billing sorted first, then start using it.</p>
+  </section>
+
+  <section id="filament">
+    <h2><span class="num">3.</span> Connect to Filament</h2>
+    <p>Now connect the agent to Filament. From here on, that's where you chat with it — invite it into your channels and talk to it like any other member. Everything below happens through Filament and the agent's own terminal.</p>
   </section>
 
   <section id="claude">
-    <h2><span class="num">2.</span> Install Claude on the VM (do this early)</h2>
+    <h2><span class="num">4.</span> Install Claude on the VM (do this early)</h2>
     <p>Your agent runs on its own managed machine and has a terminal. Getting Claude Code onto it early means you can drive the box directly instead of only through chat. Open the agent's terminal (or ask the agent to run this for you):</p>
     <div class="code"><button class="copy">Copy</button><pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre></div>
     <p>Then check it landed, and log in when prompted:</p>
@@ -148,18 +159,18 @@ claude</code></pre></div>
   </section>
 
   <section id="model">
-    <h2><span class="num">3.</span> Pick a model</h2>
+    <h2><span class="num">5.</span> Pick a model</h2>
     <p>A fresh agent may come up on a default model you didn't pick. Set the one you actually want before testing any behavior. In the terminal run <code>hermes model</code>, or type <code>/model</code> in the chat.</p>
     <p><code>anthropic/claude-sonnet-4-6</code> is a good default. Switch to Opus for heavier work. If you're on OpenRouter you can swap freely with one key. Ask the agent what model it's running to double-check.</p>
   </section>
 
   <section id="alive">
-    <h2><span class="num">4.</span> Check it's alive</h2>
+    <h2><span class="num">6.</span> Check it's alive</h2>
     <p>Say <code>hi</code>. You should get a short, warm greeting that asks what you need. Say <code>test</code> and it should confirm it's there and ready.</p>
   </section>
 
   <section id="connect">
-    <h2><span class="num">5.</span> Connect email &amp; calendar</h2>
+    <h2><span class="num">7.</span> Connect email &amp; calendar</h2>
     <p>Hermes has Composio built in, so hooking up Google is a couple of clicks. Send it:</p>
     <p class="prompt-label">Paste to your agent</p>
     <div class="code"><button class="copy">Copy</button><pre><code>Can I connect my email and calendar? Send me the OAuth links.</code></pre></div>
@@ -168,20 +179,20 @@ claude</code></pre></div>
   </section>
 
   <section id="channels">
-    <h2><span class="num">6.</span> Working in channels</h2>
+    <h2><span class="num">8.</span> Working in channels</h2>
     <p>This is where the interesting behavior lives. Vouch the agent into a loop from the Welcome channel. Then, from another account, have someone ask it something in a shared channel, like <em>"what meetings did Mari have today?"</em></p>
     <p>A well-behaved agent backchannels you privately first and asks how to proceed. It should not answer a stranger blind.</p>
     <div class="note"><strong>Set the rules before it speaks up.</strong> By default the agent stays private and may say nothing in public until you tell it it's okay. Give it a standing rule, for example: <em>"you can share with Brock any meeting he's also in."</em> It confirms the rule back. Then say <em>"go ahead and reply,"</em> and it posts an answer scoped to only what that rule allows.</p>
   </section>
 
   <section id="more">
-    <h2><span class="num">7.</span> Add more integrations</h2>
+    <h2><span class="num">9.</span> Add more integrations</h2>
     <p>Ask what else is worth connecting: <em>"to be a good assistant, what other integrations should we hook up?"</em> You'll get a short, tiered suggestion — email and calendar first, then Drive/Docs/Sheets, Notion, Linear or GitHub.</p>
     <p>Connect them the same way: say <em>"let's hook up Linear,"</em> authorize, say <code>done</code>, and have it verify. Drive OAuth in particular can sit in a pending state, so ask it to check rather than assume it finished.</p>
   </section>
 
   <section id="soul">
-    <h2><span class="num">8.</span> Give it a personality (SOUL.md)</h2>
+    <h2><span class="num">10.</span> Give it a personality (SOUL.md)</h2>
     <p>The agent's identity, personality, goals, and scope live in a <code>SOUL.md</code> file. Ask it to guide you: <em>"help me set your SOUL.md — walk me through your personality and goals."</em> Describe the role in plain words, then ask it to send you the full file so you can read and edit it.</p>
     <div class="note"><strong>Keep the soul to who it is, not how it's wired.</strong> Agents tend to stuff operational routing (environment paths, tool rules) into the soul. That doesn't belong there. Tell it to pull that out and keep the soul to identity, personality, goals, and scope.</div>
     <p>Here's a solid starting point — a simple external EA that partners with your chief of staff rather than replacing them. Copy it into <code>/home/node/.hermes/SOUL.md</code> and edit the wording anytime.</p>
@@ -270,7 +281,7 @@ When drafting for me:
   </section>
 
   <section id="watch">
-    <h2><span class="num">9.</span> A few things to watch</h2>
+    <h2><span class="num">11.</span> A few things to watch</h2>
     <ul>
       <li><strong>Timezones and invented meetings.</strong> Check calendar answers against your real calendar the first few times.</li>
       <li><strong>OAuth that didn't finish.</strong> Ask the agent to verify a connection in Composio instead of trusting a "connected" message.</li>
