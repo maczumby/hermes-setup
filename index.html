@@ -128,6 +128,7 @@
       <li><a href="#filament">Connect to Filament</a></li>
       <li><a href="#claude">Install Claude on the VM</a></li>
       <li><a href="#model">Pick a model</a></li>
+      <li><a href="#compaction">Turn off the compaction alert</a></li>
       <li><a href="#alive">Check it's alive</a></li>
       <li><a href="#connect">Connect email &amp; calendar</a></li>
       <li><a href="#channels">Working in channels</a></li>
@@ -173,13 +174,19 @@ claude</code></pre></div>
     <p><code>anthropic/claude-sonnet-4-6</code> is a good default. Switch to Opus for heavier work. If you're on OpenRouter you can swap freely with one key. Ask the agent what model it's running to double-check.</p>
   </section>
 
+  <section id="compaction">
+    <h2><span class="num">6.</span> Turn off the compaction alert</h2>
+    <p>Hermes shows a compaction warning that keeps popping up while you work. Turn it off once, up front, so it stays out of your way. Run this in the agent's terminal, or paste it to the agent in chat:</p>
+    <div class="code"><button class="copy">Copy</button><pre><code>hermes config set compression.codex_gpt55_autoraise false</code></pre></div>
+  </section>
+
   <section id="alive">
-    <h2><span class="num">6.</span> Check it's alive</h2>
+    <h2><span class="num">7.</span> Check it's alive</h2>
     <p>Say <code>hi</code>. You should get a short, warm greeting that asks what you need. Say <code>test</code> and it should confirm it's there and ready.</p>
   </section>
 
   <section id="connect">
-    <h2><span class="num">7.</span> Connect email &amp; calendar</h2>
+    <h2><span class="num">8.</span> Connect email &amp; calendar</h2>
     <p>Hermes has Composio built in, so hooking up Google is a couple of clicks. Send it:</p>
     <p class="prompt-label">Paste to your agent</p>
     <div class="code"><button class="copy">Copy</button><pre><code>Can I connect my email and calendar? Send me the OAuth links.</code></pre></div>
@@ -188,20 +195,20 @@ claude</code></pre></div>
   </section>
 
   <section id="channels">
-    <h2><span class="num">8.</span> Working in channels</h2>
+    <h2><span class="num">9.</span> Working in channels</h2>
     <p>This is where the interesting behavior lives. Vouch the agent into a loop from the Welcome channel. Then, from another account, have someone ask it something in a shared channel, like <em>"what meetings did Mari have today?"</em></p>
     <p>A well-behaved agent backchannels you privately first and asks how to proceed. It should not answer a stranger blind.</p>
     <div class="note"><strong>Set the rules before it speaks up.</strong> By default the agent stays private and may say nothing in public until you tell it it's okay. Give it a standing rule, for example: <em>"you can share with Brock any meeting he's also in."</em> It confirms the rule back. Then say <em>"go ahead and reply,"</em> and it posts an answer scoped to only what that rule allows.</p>
   </section>
 
   <section id="more">
-    <h2><span class="num">9.</span> Add more integrations</h2>
+    <h2><span class="num">10.</span> Add more integrations</h2>
     <p>Ask what else is worth connecting: <em>"to be a good assistant, what other integrations should we hook up?"</em> You'll get a short, tiered suggestion — email and calendar first, then Drive/Docs/Sheets, Notion, Linear or GitHub.</p>
     <p>Connect them the same way: say <em>"let's hook up Linear,"</em> authorize, say <code>done</code>, and have it verify. Drive OAuth in particular can sit in a pending state, so ask it to check rather than assume it finished.</p>
   </section>
 
   <section id="soul">
-    <h2><span class="num">10.</span> Give it a personality (SOUL.md)</h2>
+    <h2><span class="num">11.</span> Give it a personality (SOUL.md)</h2>
     <p>The agent's identity, personality, goals, and scope live in a <code>SOUL.md</code> file. Ask it to guide you: <em>"help me set your SOUL.md — walk me through your personality and goals."</em> Describe the role in plain words, then ask it to send you the full file so you can read and edit it.</p>
     <div class="note"><strong>Keep the soul to who it is, not how it's wired.</strong> Agents tend to stuff operational routing (environment paths, tool rules) into the soul. That doesn't belong there. Tell it to pull that out and keep the soul to identity, personality, goals, and scope.</div>
     <p>Here's a solid starting point — a simple external EA that partners with your chief of staff rather than replacing them. Copy it into <code>/home/node/.hermes/SOUL.md</code> and edit the wording anytime.</p>
@@ -290,7 +297,7 @@ When drafting for me:
   </section>
 
   <section id="watch">
-    <h2><span class="num">11.</span> A few things to watch</h2>
+    <h2><span class="num">12.</span> A few things to watch</h2>
     <ul>
       <li><strong>Timezones and invented meetings.</strong> Check calendar answers against your real calendar the first few times.</li>
       <li><strong>OAuth that didn't finish.</strong> Ask the agent to verify a connection in Composio instead of trusting a "connected" message.</li>
