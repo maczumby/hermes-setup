@@ -32,6 +32,14 @@
   h1{font-size:34px;line-height:1.15;margin:0 0 14px;letter-spacing:-.01em}
   .lede{font-size:18px;color:var(--muted);margin:0 0 8px}
   .meta{font-size:13px;color:var(--muted);margin-top:18px}
+  .cta{
+    display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    font-size:18px;font-weight:700;padding:16px 32px;border-radius:12px;margin:24px 0 4px;
+    box-shadow:0 3px 14px rgba(42,111,219,.30);transition:background .15s,transform .05s;
+  }
+  .cta:hover{background:#215ab6}
+  .cta:active{transform:translateY(1px)}
+  .cta .arrow{margin-left:10px}
   .meta code{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
   nav.toc{
     background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
@@ -109,6 +117,7 @@
     <h1>Set up your own Hermes agent on Filament</h1>
     <p class="lede">A hosted AI agent you create on Agent37 and connect to Filament, so it can read your email and calendar and help you in any channel you invite it to. This walks you through it end to end.</p>
     <p class="meta">Your agent runs online, not on your own computer, so it keeps working even when your laptop is closed. Give yourself about 20 minutes to set it up.</p>
+    <p><a class="cta" href="https://www.agent37.com/?via=filament" target="_blank" rel="noopener">Start here: create your agent on Agent37<span class="arrow">→</span></a></p>
   </header>
 
   <nav class="toc">
@@ -131,7 +140,7 @@
 
   <section id="create">
     <h2><span class="num">1.</span> Create your agent on Agent37</h2>
-    <p>Start at <a href="https://www.agent37.com" target="_blank" rel="noopener">agent37.com</a>, not in Filament. Click <strong>Deploy your instance</strong> and sign in.</p>
+    <p>Start at <a href="https://www.agent37.com/?via=filament" target="_blank" rel="noopener">agent37.com</a>, not in Filament. Click <strong>Deploy your instance</strong> and sign in.</p>
     <ul>
       <li>Choose <strong>Hermes</strong> as the agent (not OpenClaw).</li>
       <li>Pick the <strong>smallest</strong> instance to start. It's the cheapest, and you can always size up later.</li>
