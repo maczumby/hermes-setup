@@ -312,7 +312,7 @@ When drafting for me:
     <p>Everything runs on the agent's own machine with your own data. Nothing is uploaded anywhere. It comes with <strong>Trellis</strong>, a relationship memory that remembers who people are, what you owe them, and who's worth reaching out to, and cites where each fact came from.</p>
 
     <h3>How to set it up</h3>
-    <p>The tool lives in a private repo, so first request access below. Once you're added, tell your agent to clone it and set it up:</p>
+    <p>The repo is public — tell your agent to clone it and set it up:</p>
     <div class="code"><button class="copy">Copy</button><pre><code>git clone https://github.com/maczumby/network-observatory.git</code></pre></div>
     <p>Then get your LinkedIn export (LinkedIn → Settings → Data privacy → Get a copy of your data → the "Basic" archive with Connections; you don't need to unzip it), upload it in the chat, and say:</p>
     <p class="prompt-label">Paste to your agent</p>
@@ -324,16 +324,6 @@ When drafting for me:
     <p class="prompt-label">Paste to your agent</p>
     <div class="code"><button class="copy">Copy</button><pre><code>Update the network-observatory tool from the latest version and rebuild my map. Don't touch my data, flags, or notes.</code></pre></div>
 
-    <div class="intake">
-      <h3>Request access to the skill</h3>
-      <p>Drop your GitHub username below. It opens a short request on GitHub — I get notified and add you to the repo, then you can clone it and hand it to your agent.</p>
-      <div class="row">
-        <input id="gh" type="text" placeholder="your-github-username" autocomplete="off" spellcheck="false" aria-label="GitHub username">
-        <button id="req">Request access</button>
-      </div>
-      <p class="err" id="err">Enter your GitHub username first.</p>
-      <p class="hint">You'll need to be signed in to GitHub to send the request — that's how I confirm the handle is really yours.</p>
-    </div>
   </section>
 
   <footer>
@@ -358,30 +348,6 @@ When drafting for me:
     });
   });
 
-  // Access-request: open a pre-filled GitHub issue
-  var REPO = 'maczumby/hermes-setup';
-  function submitHandle(){
-    var input = document.getElementById('gh');
-    var err = document.getElementById('err');
-    var handle = (input.value || '').trim().replace(/^@+/, '').replace(/\s+/g, '');
-    if(!handle){ err.style.display = 'block'; input.focus(); return; }
-    err.style.display = 'none';
-    var title = 'Access request: @' + handle;
-    var body =
-      'Requesting access to the network-observatory skill.\n\n' +
-      '- GitHub handle: @' + handle + '\n' +
-      '- What I\'m running (optional): \n\n' +
-      'Please add me as a collaborator so I can clone the repo. Thanks!';
-    var url = 'https://github.com/' + REPO + '/issues/new'
-      + '?title=' + encodeURIComponent(title)
-      + '&labels=' + encodeURIComponent('access-request')
-      + '&body=' + encodeURIComponent(body);
-    window.open(url, '_blank', 'noopener');
-  }
-  document.getElementById('req').addEventListener('click', submitHandle);
-  document.getElementById('gh').addEventListener('keydown', function(e){
-    if(e.key === 'Enter') submitHandle();
-  });
 </script>
 </body>
 </html>
