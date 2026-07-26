@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 4: See what changed — workshop guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Part 4 of 6</nav>
+
+  <header>
+    <p class="kicker">Part 4</p>
+    <h1>See what changed</h1>
+    <p class="lede">You just changed your agent's rules twice. In a month, will you remember what they are? This part gives you a page on your agent's own machine that shows its current rules, every change ever made to them, and a plain-language table of where it's allowed to speak.</p>
+  </header>
+
+  <h2><span class="num">1.</span> Install the audit kit</h2>
+  <p>Paste this in your backchannel and let the agent do the work:</p>
+  <p class="prompt-label">Paste to your agent</p>
+  <div class="code"><button class="copy">Copy</button><pre><code>git clone https://github.com/maczumby/hermes-audit-kit.git and set it up:
+read its AGENTS.md, start the auditor, expose it, and send me the link.</code></pre></div>
+  <p>The agent clones a small tool onto its machine, starts it, gives it a public web address, checks the address actually loads, and sends you the link. It will also tell you, honestly, that the link is public until you set a password.</p>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a link from your agent. Open it.</span></label></div>
+
+  <h2><span class="num">2.</span> Read your own audit trail</h2>
+  <figure class="shot">
+    <img src="img/audit-page.png" alt="The audit page: permissions table and instructions timeline">
+    <div class="ph">Screenshot coming: audit-page.png (generated, not yours to shoot)</div>
+    <figcaption>The audit page for an agent that's been through part 3.</figcaption>
+  </figure>
+  <p>The page has three parts:</p>
+  <ul>
+    <li><strong>"Where can my agent speak?"</strong>: one row per channel, in plain words: <em>responds to everyone</em>, <em>only when @-mentioned</em>, <em>never responds here</em>, and which one is your admin backchannel. If part 3 went right, you'll see your opened-then-closed channel sitting back on the default.</li>
+    <li><strong>Current standing instructions</strong>: the actual text your agent is operating on right now.</li>
+    <li><strong>How the instructions changed</strong>: every change, timestamped, with a diff. The change-notes your agent has been appending show up here, so each change carries its own why. This is the page to check when the agent starts acting differently and you want to know what changed and when.</li>
+  </ul>
+  <div class="note"><strong>What this page can and can't tell you:</strong> it sees <em>when</em> a rule changed and <em>what</em> it became. It can tell whether a change went through the agent's official backchannel tool or the file was edited some other way. But no file watcher can see <em>who</em> asked. The "why" lives in the change-notes, which is exactly why part 3's paste blocks make your agent write one every time.</div>
+
+  <h2><span class="num">3.</span> Lock it (recommended)</h2>
+  <p>Your standing instructions can contain private rules: names, judgments, things you'd phrase differently in public. Tell your agent:</p>
+  <p class="prompt-label">Paste to your agent</p>
+  <div class="code"><button class="copy">Copy</button><pre><code>Put a password on my audit page and send me the details here.</code></pre></div>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> the link prompt for a username and password before showing the page. The link itself stays the same.</span></label></div>
+
+  <p>That's the spine done. You stood the agent up, picked its brain, set and unset its channel rules, and you can audit its configuration on demand. Now pick what it becomes.</p>
+
+  <div class="pager">
+    <a href="3-backchannel-and-permissions.html"><span class="dir">Back</span>Part 3: Backchannel &amp; permissions</a>
+    <a href="5-research-agent.html"><span class="dir">Next</span>Part 5: The research agent</a>
+  </div>
+
+</div>
+<script src="guide.js"></script>
+</body>
+</html>

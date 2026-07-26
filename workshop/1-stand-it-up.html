@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 1: Stand it up — workshop guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Part 1 of 6</nav>
+
+  <header>
+    <p class="kicker">Part 1</p>
+    <h1>Stand it up</h1>
+    <p class="lede">You're renting a blank computer and putting your agent on it. It has none of your data until you hand data over. That's the point of doing it this way.</p>
+  </header>
+
+  <h2><span class="num">1.</span> Create your agent on Agent37</h2>
+  <p>Go to <a href="https://www.agent37.com/?via=filament" target="_blank" rel="noopener">agent37.com</a> and sign in (Google login works). Click <strong>Deploy your instance</strong>.</p>
+  <figure class="shot">
+    <img src="img/a37-signin.png" alt="Agent 37 sign-in page">
+    <div class="ph">Screenshot coming: a37-signin.png</div>
+    <figcaption>The Agent37 sign-in page.</figcaption>
+  </figure>
+  <ul>
+    <li>Choose <strong>Hermes</strong> as the agent (not OpenClaw).</li>
+    <li>Pick the <strong>smallest instance</strong>. It's the cheapest and plenty for today; you can size up later.</li>
+    <li>Give it a name. This becomes its identity, so pick something you're happy saying out loud.</li>
+  </ul>
+  <figure class="shot">
+    <img src="img/a37-hermes-seat.png" alt="Create-agent screen with Hermes and the smallest instance selected">
+    <div class="ph">Screenshot coming: a37-hermes-seat.png</div>
+    <figcaption>Hermes selected, smallest instance, before you confirm.</figcaption>
+  </figure>
+  <p>Confirm and launch. It takes a minute to come up.</p>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> your agent listed on your Agent37 dashboard with a green or "running" status.</span></label></div>
+
+  <h2><span class="num">2.</span> Open its terminal (two minutes of basics)</h2>
+  <p>Your agent runs on its own machine, and that machine has a terminal you can open right in the browser from the agent's page on Agent37. You'll paste a few commands into it today. The three things worth knowing:</p>
+  <ul>
+    <li><strong>Paste</strong> with right-click (or Cmd/Ctrl+V, depending on your browser).</li>
+    <li><strong>Up arrow</strong> brings back the last command, so you never retype.</li>
+    <li><strong>Ctrl+C</strong> cancels whatever's running if something looks stuck.</li>
+  </ul>
+  <figure class="shot">
+    <img src="img/a37-terminal.png" alt="The agent's browser terminal at a fresh prompt">
+    <div class="ph">Screenshot coming: a37-terminal.png</div>
+    <figcaption>The browser terminal, waiting at a prompt.</figcaption>
+  </figure>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a terminal with a blinking cursor at a prompt. Type <code>echo hello</code> and press Enter. It should echo back.</span></label></div>
+
+  <h2><span class="num">3.</span> Connect it to Filament</h2>
+  <p>In the Filament app, open the <strong>Agents</strong> tab and choose to connect a Hermes agent. Filament gives you a one-line connect command with a token in it.</p>
+  <figure class="shot">
+    <img src="img/fil-agents-tab.png" alt="Filament Agents tab showing the connect command">
+    <div class="ph">Screenshot coming: fil-agents-tab.png</div>
+    <figcaption>The Agents tab, where your connect command comes from.</figcaption>
+  </figure>
+  <p>Copy that command, go back to the agent's terminal, and paste it in. That token is a key to your agent. Treat it like a password and don't post it anywhere.</p>
+  <figure class="shot">
+    <img src="img/a37-connect-ok.png" alt="Terminal showing a successful Filament connect">
+    <div class="ph">Screenshot coming: a37-connect-ok.png</div>
+    <figcaption>What a successful connect looks like.</figcaption>
+  </figure>
+  <p>Two things happen when it connects: your agent shows up in Filament as a member you can talk to, and Filament creates a private channel between just the two of you. That private channel is called your <strong>backchannel</strong>, and it's the most important concept of the day. Part 3 is all about it.</p>
+  <figure class="shot">
+    <img src="img/fil-backchannel.png" alt="The freshly created backchannel in Filament">
+    <div class="ph">Screenshot coming: fil-backchannel.png</div>
+    <figcaption>Your new backchannel: just you and your agent.</figcaption>
+  </figure>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a private channel with your agent in your Filament app. Say <code>hi</code> in it. You should get a short, warm greeting back.</span></label></div>
+
+  <p class="stuck">Nothing came back? Give it a minute; first wake can be slow. Still nothing: raise your hand.</p>
+
+  <div class="pager">
+    <a href="index.html"><span class="dir">Back</span>Workshop guide</a>
+    <a href="2-pick-the-brain.html"><span class="dir">Next</span>Part 2: Pick the brain</a>
+  </div>
+
+</div>
+<script src="guide.js"></script>
+</body>
+</html>
