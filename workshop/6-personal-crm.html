@@ -14,7 +14,7 @@
   <header>
     <p class="kicker">Part 6 — the team exercise</p>
     <h1>The relationship agent</h1>
-    <p class="lede">Your professional network, as a map your agent can answer questions from. Then, with rules you set, a map <em>other people</em> can ask your agent about. This is where trusted access to a network gets real, so we do it in teams.</p>
+    <p class="lede">This part turns your LinkedIn export into a map your agent can answer questions from, first for you, and then, with rules you set, for <em>other people</em>. We do it in teams because the interesting part is what happens when several networks end up in one channel.</p>
   </header>
 
   <h2><span class="num">1.</span> Get your LinkedIn export</h2>
@@ -33,7 +33,7 @@
 network-observatory tool and build my map from this LinkedIn export. Read its
 CLAUDE.md, import my connections, build the map, and send me the
 observatory.html file to open. You don't need to unzip anything.</code></pre></div>
-  <p>You get back a single file. Open it: that's your network as a star map: search anyone, color by company or seniority, click a person for details. Everything ran on your agent's machine with your data; nothing was uploaded anywhere.</p>
+  <p>You get back a single file. Open it and that's your network as a star map: search anyone, color by company or seniority, click a person for details. Everything ran on your agent's machine with your data; nothing was uploaded anywhere.</p>
   <figure class="shot">
     <img src="img/obs-starmap.png" alt="A network observatory star map">
     <div class="ph">Screenshot coming: obs-starmap.png</div>
@@ -42,7 +42,7 @@ observatory.html file to open. You don't need to unzip anything.</code></pre></d
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> your map, and the agent's summary of what it imported (how many people, what span of years, top companies).</span></label></div>
 
   <h2><span class="num">3.</span> Give it the role, with sharing rules</h2>
-  <p>Now the part that makes this a <em>relationship agent</em> rather than a chart. This paste block sets what it does for you privately, and (read this part carefully before you send it) what it may share when other people ask:</p>
+  <p>The next paste is what makes this a <em>relationship agent</em> rather than a chart. It sets what it does for you privately, and (read this part carefully before you send it) what it may share when other people ask:</p>
   <p class="prompt-label">Paste to your agent — in the backchannel (<a href="pastes/crm-agent.md">raw file</a>)</p>
   <div class="code tall"><button class="copy">Copy</button><pre><code>I want you to act as my personal relationship agent, built on the network
 map and relationship memory you set up from my LinkedIn export.
@@ -95,8 +95,8 @@ stranger asked it in a shared channel, so I can hear the difference.</code></pre
     <li><em>"Do any of our networks reach someone at [company one of you is trying to get into]?"</em></li>
     <li><em>"Who do we collectively know in [field]?"</em></li>
   </ul>
-  <p>Each agent answers from its own person's network, within its own person's rules. That's the demo that matters: four people, four private networks, one channel where the overlap becomes visible. And nobody handed over their data to anyone.</p>
-  <p>If a question makes you wince ("wait, I don't want my agent saying that"), that's not a problem, that's the exercise working. Go tighten the rule in your backchannel and watch the change land on your audit page.</p>
+  <p>Each agent answers from its own person's network, within its own person's rules, so several people's networks become visible in one channel without anyone actually handing their data over.</p>
+  <p>If a question makes you wince ("wait, I don't want my agent saying that"), that's useful information. Go tighten the rule in your backchannel, and you'll see the change show up on your audit page.</p>
 
   <div class="pager">
     <a href="5-research-agent.html"><span class="dir">Back</span>Part 5: The research agent</a>
