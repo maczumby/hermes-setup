@@ -218,18 +218,21 @@ figure.shot.missing .ph{
 .pager .dir{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:3px}
 .pager a.next{margin-left:auto;text-align:right;border-color:rgba(231,79,29,.35)}
 
+/* Buttons */
+a.cta{
+  display:inline-block;background:var(--accent-deep);color:#fff7ea;border-radius:10px;
+  text-decoration:none;font-weight:700;font-size:15.5px;padding:13px 24px;margin:6px 0 2px;
+  box-shadow:var(--glow);transition:transform .15s,background .15s;
+}
+a.cta:hover{background:var(--accent);transform:translateY(-1px);color:#fff}
+
 /* Course home */
+.continue .cta{flex:none}
 .continue{
   display:flex;align-items:center;gap:18px;justify-content:space-between;
   background:linear-gradient(120deg,#2b1c10,#241d13);border:1px solid rgba(231,79,29,.4);
   border-radius:14px;padding:20px 24px;margin:30px 0 8px;
 }
-.continue .cta{
-  flex:none;background:var(--accent-deep);color:#fff7ea;border-radius:10px;text-decoration:none;
-  font-weight:700;font-size:15px;padding:12px 22px;box-shadow:var(--glow);
-  transition:transform .15s,background .15s;
-}
-.continue .cta:hover{background:var(--accent);transform:translateY(-1px);color:#fff}
 .continue .sub{font-size:13.5px;color:var(--muted);margin-top:3px}
 .paths{display:flex;flex-direction:column;gap:0;margin:26px 0;position:relative;padding-left:14px}
 .paths::before{content:"";position:absolute;left:24px;top:26px;bottom:26px;width:2px;background:var(--line);border-radius:2px}

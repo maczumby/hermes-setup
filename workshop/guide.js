@@ -176,11 +176,12 @@
     });
   });
 
-  // Screenshot placeholders
+  // Screenshot placeholders. The error event can fire before this script
+  // runs, so also check the already-settled state.
   document.querySelectorAll('figure.shot img').forEach(function (img) {
-    img.addEventListener('error', function () {
-      img.closest('figure').classList.add('missing');
-    });
+    function missing() { img.closest('figure').classList.add('missing'); }
+    img.addEventListener('error', missing);
+    if (img.complete && img.naturalWidth === 0) missing();
   });
 
   // Checkpoints (existing key scheme kept)
