@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Part 2: Pick the brain — workshop guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Part 2 of 8</nav>
+
+  <header>
+    <p class="kicker">Part 2</p>
+    <h1>Pick the brain</h1>
+    <p class="lede">The agent and the model are separate things. That's one of the reasons to own your own agent: you pick which model powers it, and you can change your mind later without losing anything.</p>
+  </header>
+
+  <h2><span class="num">1.</span> Log it into a subscription you already pay for</h2>
+  <p>Out of the box the agent charges work against prepaid credit, and one long job can quietly drain it. The safe move for today: log the agent into a subscription you already have, so the work runs on subscription tokens instead of a per-use bill.</p>
+  <p>Our recommendation is <strong>ChatGPT ($20 Plus)</strong> — the agent logs into your account and runs on <strong>Codex</strong>, and it's the path we've tested most in these workshops. <strong>GitHub Copilot</strong> and <strong>Grok</strong> subscriptions also work if that's what you have.</p>
+  <div class="note"><strong>Two things that trip people up:</strong> a Claude subscription does <em>not</em> work for Hermes login. That's a terms-of-service thing, not a bug. And if you use a raw API key instead of a subscription, set a hard spending cap at the provider first and don't give the agent any scheduled jobs until you've watched a day of costs.</div>
+  <p>In the agent's terminal, run:</p>
+  <div class="code"><button class="copy">Copy</button><pre><code>hermes model</code></pre></div>
+  <p>Pick the provider you have a subscription with and follow the login flow it gives you (it will hand you a link to open in your browser). The sign-in code shows up <strong>in the terminal</strong>, not the browser, so keep an eye there.</p>
+  <figure class="shot">
+    <img src="img/a37-model-login.png" alt="Hermes model selection and subscription login">
+    <div class="ph">Screenshot coming: a37-model-login.png</div>
+    <figcaption>The model picker and subscription login flow.</figcaption>
+  </figure>
+  <div class="note"><strong>If the ChatGPT login link won't complete:</strong> open ChatGPT in another tab → <strong>Settings</strong> → <strong>Security and login</strong>, scroll to the bottom, and turn on <strong>device code authorization for Codex</strong>. Then re-click the link from the terminal. This one step stops most people cold, and it's easy to miss.</div>
+  <p>When it asks which model to run, ChatGPT gives you a few. GPT-5.5 is a fine default for today. GPT-5.6 Soul is their most capable (their answer to Fable); it burns through subscription tokens faster but costs you nothing extra, so use it if you want. You can switch any time.</p>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> the login confirmed in the terminal. Then ask the agent in chat: <em>"what model are you running?"</em> The answer should match what you picked.</span></label></div>
+
+  <h2><span class="num">2.</span> Turn off the compaction alert</h2>
+  <p>Hermes shows a recurring warning that gets in the way while you work. Turn it off once now. Run this in the terminal, or paste it to the agent in chat:</p>
+  <div class="code"><button class="copy">Copy</button><pre><code>hermes config set compression.codex_gpt55_autoraise false</code></pre></div>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a confirmation that the setting changed. This one is just housekeeping.</span></label></div>
+
+  <h2><span class="num">3.</span> Prove the whole loop works</h2>
+  <p>In your backchannel, ask it to actually do something:</p>
+  <p class="prompt-label">Paste to your agent</p>
+  <div class="code"><button class="copy">Copy</button><pre><code>Look up today's most interesting AI news story and give me two sentences on why it matters.</code></pre></div>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a real answer with a real story. If you got one, the agent, its model, and its tools are all connected, and the rest of the guide builds on that.</span></label></div>
+
+  <div class="pager">
+    <a href="1-stand-it-up.html"><span class="dir">Back</span>Part 1: Stand it up</a>
+    <a href="3-set-its-soul.html"><span class="dir">Next</span>Part 3: Set its soul</a>
+  </div>
+
+</div>
+<script src="guide.js"></script>
+</body>
+</html>

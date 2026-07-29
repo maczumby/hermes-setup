@@ -1,0 +1,259 @@
+/* Workshop course — shares the deck's visual world: warm dark ground,
+   Filament orange, cream ink. The signature is the filament: a wire that
+   lights up as checkpoints get done. */
+
+:root{
+  --ground:#16130f;
+  --surface:#201c15;
+  --surface-2:#2a2419;
+  --ink:#fcf6dc;            /* filamentText */
+  --muted:#b3a88f;
+  --dim:#7d745f;
+  --accent:#e74f1d;          /* filament7 — reads bright on dark */
+  --accent-deep:#d94717;     /* filament6 */
+  --accent-soft:rgba(231,79,29,.14);
+  --glow:0 0 14px rgba(231,79,29,.45);
+  --line:#3a3325;
+  --code-bg:#0e0c08;
+  --ok:#8fc47a;
+  --radius:12px;
+  --rail:288px;
+  --wire:2px;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,"Geist Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font:17px/1.7 var(--sans);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+a{color:#f0916c;text-decoration-color:rgba(240,145,108,.4);text-underline-offset:3px}
+a:hover{color:#ffb08f}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* ── Shell: rail + content ─────────────────────────────────────────── */
+.shell{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);min-height:100vh}
+
+.rail{
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+  border-right:1px solid var(--line);background:var(--surface);
+  padding:34px 0 28px;display:flex;flex-direction:column;
+  scrollbar-width:thin;scrollbar-color:var(--line) transparent;
+}
+.rail-brand{padding:0 26px 6px;font-weight:700;font-size:15px;letter-spacing:.01em}
+.rail-brand .co{display:block;color:var(--accent);font-size:11px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em;margin-bottom:6px}
+.rail-progress{padding:16px 26px 20px;border-bottom:1px solid var(--line)}
+.bar{height:5px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,var(--accent-deep),#ff7a3d);
+  box-shadow:var(--glow);transition:width .5s cubic-bezier(.3,.7,.3,1)}
+.bar-label{font-size:12px;color:var(--muted);margin-top:9px;font-variant-numeric:tabular-nums}
+
+/* The filament: module list threaded on a wire */
+.rail-nav{list-style:none;margin:10px 0 0;padding:2px 0;position:relative;flex:1}
+.rail-nav::before{ /* the unlit wire */
+  content:"";position:absolute;left:37px;top:18px;bottom:18px;width:var(--wire);
+  background:var(--line);border-radius:2px;
+}
+.rail-item{position:relative}
+.rail-item a{
+  display:grid;grid-template-columns:24px 1fr;gap:16px;align-items:baseline;
+  padding:11px 22px 11px 27px;color:var(--muted);text-decoration:none;font-size:14.5px;
+  transition:background .15s,color .15s;
+}
+.rail-item a:hover{background:rgba(255,255,255,.03);color:var(--ink)}
+.rail-item .node{
+  position:relative;z-index:1;width:22px;height:22px;border-radius:50%;
+  border:2px solid var(--dim);background:var(--surface);align-self:center;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10.5px;font-weight:700;color:var(--dim);font-variant-numeric:tabular-nums;
+  transition:all .25s;
+}
+.rail-item .t{display:block;line-height:1.35}
+.rail-item .m{display:block;font-size:11.5px;color:var(--dim);margin-top:1px}
+.rail-item.lit .node{border-color:var(--accent);color:var(--accent)}
+.rail-item.done .node{border-color:var(--accent);background:var(--accent);color:#1a0d06;box-shadow:var(--glow)}
+.rail-item.done > a{color:var(--muted)}
+.rail-item.here > a{background:var(--accent-soft);color:var(--ink)}
+.rail-item.here .node{border-color:var(--accent);color:var(--accent);box-shadow:var(--glow)}
+/* lit wire segment behind completed modules */
+.rail-item.done::before,.rail-item.wire-lit::before{
+  content:"";position:absolute;left:37px;top:0;bottom:0;width:var(--wire);
+  background:linear-gradient(180deg,#ff7a3d,var(--accent-deep));
+  box-shadow:0 0 8px rgba(231,79,29,.5);z-index:0;
+}
+.rail-foot{padding:16px 26px 0;border-top:1px solid var(--line);font-size:12.5px;color:var(--dim)}
+.rail-foot a{color:var(--muted)}
+
+/* ── Mobile top bar + drawer ───────────────────────────────────────── */
+.topbar{display:none}
+@media (max-width:979px){
+  .shell{display:block}
+  .rail{
+    position:fixed;inset:0 auto 0 0;width:min(320px,86vw);z-index:40;
+    transform:translateX(-102%);transition:transform .28s cubic-bezier(.3,.7,.3,1);
+    box-shadow:24px 0 60px rgba(0,0,0,.5);
+  }
+  body.nav-open .rail{transform:none}
+  .scrim{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:30;opacity:0;
+    pointer-events:none;transition:opacity .25s}
+  body.nav-open .scrim{opacity:1;pointer-events:auto}
+  .topbar{
+    display:flex;position:sticky;top:0;z-index:20;align-items:center;gap:14px;
+    background:color-mix(in srgb,var(--ground) 88%,transparent);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);padding:12px 18px;
+  }
+  .topbar .burger{
+    background:none;border:1px solid var(--line);border-radius:8px;color:var(--ink);
+    width:38px;height:34px;font-size:16px;cursor:pointer;flex:none;line-height:1;
+  }
+  .topbar .where{font-size:13.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .topbar .bar{flex:1;min-width:60px}
+}
+
+/* ── Content column ────────────────────────────────────────────────── */
+.wrap{max-width:780px;margin:0 auto;padding:52px 30px 110px}
+@media (max-width:979px){.wrap{padding:34px 20px 90px}}
+
+nav.crumbs{display:none}
+.kicker{color:var(--accent);font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:12px;margin:0 0 12px}
+.module-meta{font-size:13px;color:var(--dim);margin:0 0 12px;font-variant-numeric:tabular-nums}
+h1{font-size:clamp(30px,4.4vw,40px);line-height:1.12;margin:0 0 16px;letter-spacing:-.022em;font-weight:800}
+.lede{font-size:19px;line-height:1.6;color:var(--muted);margin:0 0 8px}
+h2{font-size:22px;margin:52px 0 8px;letter-spacing:-.012em;font-weight:700}
+h2 .num{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:2px}
+h3{font-size:17px;margin:26px 0 6px}
+p{margin:12px 0}
+ul,ol{margin:12px 0;padding-left:24px}
+li{margin:6px 0}
+strong{font-weight:650;color:#fffbe8}
+.stuck{font-size:14px;color:var(--dim);margin-top:6px}
+p code,li code,td code{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:5px;
+  padding:1px 6px;font:.82em var(--mono);color:#f5deb9;
+}
+.note{
+  background:var(--accent-soft);border:1px solid rgba(231,79,29,.3);
+  border-left:3px solid var(--accent);border-radius:10px;
+  padding:14px 18px;margin:20px 0;font-size:15px;line-height:1.6;
+}
+.note strong{color:#ff9b6e}
+
+/* Tables — wrapped so wide tables scroll inside their box, never the page */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border-radius:10px}
+.table-wrap table{margin:0;min-width:540px}
+table{border-collapse:collapse;width:100%;margin:20px 0;font-size:14.5px;overflow:hidden;
+  border-radius:10px;border:1px solid var(--line);background:var(--surface)}
+th,td{text-align:left;padding:12px 15px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+th{background:var(--surface-2);font-size:11.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+tr:last-child td{border-bottom:none}
+
+/* Code / paste blocks */
+.prompt-label{font-size:11.5px;color:var(--muted);margin:20px 0 -8px;font-weight:650;text-transform:uppercase;letter-spacing:.08em}
+.code{position:relative;margin:18px 0}
+.code pre{
+  margin:0;background:var(--code-bg);color:#efe7cd;border:1px solid var(--line);
+  border-radius:10px;padding:18px;overflow-x:auto;white-space:pre-wrap;word-break:break-word;
+  font:13.5px/1.65 var(--mono);
+}
+.code.tall pre{max-height:400px;overflow-y:auto;scrollbar-width:thin}
+.code .copy{
+  position:absolute;top:10px;right:10px;
+  background:var(--surface-2);color:var(--ink);border:1px solid var(--line);
+  border-radius:7px;padding:5px 12px;font:600 12px var(--sans);cursor:pointer;
+  transition:all .15s;
+}
+.code .copy:hover{border-color:var(--accent);color:#ff9b6e}
+.code .copy.done{background:var(--accent);border-color:var(--accent);color:#1a0d06}
+
+/* Screenshots */
+figure.shot{margin:22px 0}
+figure.shot img{
+  display:block;max-width:100%;border:1px solid var(--line);border-radius:12px;
+  box-shadow:0 14px 40px rgba(0,0,0,.45);
+}
+figure.shot figcaption{font-size:13px;color:var(--dim);margin-top:10px}
+figure.shot.missing img{display:none}
+figure.shot .ph{display:none}
+figure.shot.missing .ph{
+  display:flex;align-items:center;justify-content:center;min-height:120px;
+  border:2px dashed #4a4130;border-radius:12px;background:var(--surface);
+  color:var(--dim);font-size:13.5px;padding:18px;text-align:center;
+}
+
+/* Checkpoints: nodes on the wire */
+.checkpoint{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:15px 18px;margin:24px 0;font-size:15.5px;line-height:1.6;
+  transition:border-color .2s, background .2s;
+}
+.checkpoint label{display:flex;gap:14px;align-items:flex-start;cursor:pointer}
+.checkpoint input{
+  appearance:none;-webkit-appearance:none;flex:none;margin-top:3px;cursor:pointer;
+  width:22px;height:22px;border-radius:50%;border:2px solid var(--dim);
+  background:transparent;display:grid;place-items:center;transition:all .2s;
+}
+.checkpoint input::after{
+  content:"";width:10px;height:10px;border-radius:50%;background:transparent;transition:background .2s;
+}
+.checkpoint input:checked{border-color:var(--accent);box-shadow:var(--glow)}
+.checkpoint input:checked::after{background:var(--accent)}
+.checkpoint:has(input:checked){border-color:rgba(231,79,29,.45);background:#241d13}
+.checkpoint .tag{font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:3px}
+
+/* Pager */
+.pager{display:flex;justify-content:space-between;gap:14px;margin-top:64px;padding-top:26px;border-top:1px solid var(--line)}
+.pager a{
+  display:block;background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:14px 20px;text-decoration:none;color:var(--ink);font-size:15px;max-width:48%;
+  transition:border-color .15s,transform .15s;
+}
+.pager a:hover{border-color:var(--accent);transform:translateY(-1px)}
+.pager .dir{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:3px}
+.pager a.next{margin-left:auto;text-align:right;border-color:rgba(231,79,29,.35)}
+
+/* Buttons */
+a.cta{
+  display:inline-block;background:var(--accent-deep);color:#fff7ea;border-radius:10px;
+  text-decoration:none;font-weight:700;font-size:15.5px;padding:13px 24px;margin:6px 0 2px;
+  box-shadow:var(--glow);transition:transform .15s,background .15s;
+}
+a.cta:hover{background:var(--accent);transform:translateY(-1px);color:#fff}
+
+/* Course home */
+.continue .cta{flex:none}
+.continue{
+  display:flex;align-items:center;gap:18px;justify-content:space-between;
+  background:linear-gradient(120deg,#2b1c10,#241d13);border:1px solid rgba(231,79,29,.4);
+  border-radius:14px;padding:20px 24px;margin:30px 0 8px;
+}
+.continue .sub{font-size:13.5px;color:var(--muted);margin-top:3px}
+.paths{display:flex;flex-direction:column;gap:0;margin:26px 0;position:relative;padding-left:14px}
+.paths::before{content:"";position:absolute;left:24px;top:26px;bottom:26px;width:2px;background:var(--line);border-radius:2px}
+.path{
+  position:relative;display:grid;grid-template-columns:22px 1fr auto;gap:18px;align-items:center;
+  background:none;border:1px solid transparent;border-radius:12px;
+  padding:16px 16px 16px 0;text-decoration:none;color:var(--ink);
+  transition:background .15s,border-color .15s;
+}
+.path:hover{background:var(--surface);border-color:var(--line)}
+.path .node{
+  position:relative;z-index:1;width:22px;height:22px;border-radius:50%;
+  border:2px solid var(--dim);background:var(--ground);
+  display:grid;place-items:center;font-size:10.5px;font-weight:700;color:var(--dim);
+}
+.path.done .node{border-color:var(--accent);background:var(--accent);color:#1a0d06;box-shadow:var(--glow)}
+.path h3{margin:0 0 3px;font-size:16.5px}
+.path p{margin:0;font-size:14px;color:var(--muted);line-height:1.5}
+.path .mins{font-size:12px;color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.path .step{display:none}
+
+footer{margin-top:70px;padding-top:24px;border-top:1px solid var(--line);color:var(--dim);font-size:13.5px}
