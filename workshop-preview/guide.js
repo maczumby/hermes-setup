@@ -4,14 +4,15 @@
 
   var COURSE = [
     { href: 'index.html', title: 'Course home', mins: 0, checks: 0, node: '⌂' },
-    { href: '1-stand-it-up.html', title: 'Stand it up', mins: 20, checks: 3 },
-    { href: '2-pick-the-brain.html', title: 'Pick the brain', mins: 10, checks: 3 },
-    { href: '3-set-its-soul.html', title: 'Set its soul', mins: 10, checks: 1 },
-    { href: '4-standing-instructions.html', title: 'Standing instructions', mins: 10, checks: 2 },
-    { href: '5-backchannel-and-permissions.html', title: 'Backchannel & permissions', mins: 25, checks: 2 },
-    { href: '6-see-what-changed.html', title: 'See what changed', mins: 10, checks: 2 },
-    { href: '7-research-agent.html', title: 'The research agent', mins: 15, checks: 2 },
-    { href: '8-relationship-agent.html', title: 'The relationship agent', mins: 25, checks: 3 },
+    { href: '0-the-idea.html', title: 'Agents, and why Hermes', mins: 6, checks: 1, node: 'i' },
+    { href: '1-stand-it-up.html', title: 'Stand it up', mins: 20, checks: 3, node: '1' },
+    { href: '2-pick-the-brain.html', title: 'Pick the brain', mins: 10, checks: 3, node: '2' },
+    { href: '3-set-its-soul.html', title: 'Set its soul', mins: 10, checks: 1, node: '3' },
+    { href: '4-standing-instructions.html', title: 'Standing instructions', mins: 10, checks: 2, node: '4' },
+    { href: '5-backchannel-and-permissions.html', title: 'Backchannel & permissions', mins: 25, checks: 2, node: '5' },
+    { href: '6-see-what-changed.html', title: 'See what changed', mins: 10, checks: 2, node: '6' },
+    { href: '7-research-agent.html', title: 'The research agent', mins: 15, checks: 2, node: '7' },
+    { href: '8-relationship-agent.html', title: 'The relationship agent', mins: 25, checks: 3, node: '8' },
   ];
 
   var dir = location.pathname.replace(/[^/]*$/, '');
@@ -117,10 +118,12 @@
   if (current && current.checks) {
     var kicker = wrap.querySelector('header .kicker');
     if (kicker) {
-      var idx = COURSE.indexOf(current);
+      var numberedTotal = COURSE.filter(function (m) { return /^\d+$/.test(m.node || ''); }).length;
       var meta = document.createElement('p');
       meta.className = 'module-meta';
-      meta.textContent = 'Module ' + idx + ' of ' + (COURSE.length - 1) + ' · about ' + current.mins + ' min';
+      meta.textContent = /^\d+$/.test(current.node || '')
+        ? 'Module ' + current.node + ' of ' + numberedTotal + ' · about ' + current.mins + ' min'
+        : 'About ' + current.mins + ' min · read this first';
       kicker.insertAdjacentElement('afterend', meta);
     }
   }
@@ -139,7 +142,7 @@
       if (!mod) return;
       var node = document.createElement('span');
       node.className = 'node';
-      node.textContent = String(i + 1);
+      node.textContent = mod.node || String(i + 1);
       card.insertBefore(node, card.firstChild);
       var mins = document.createElement('span');
       mins.className = 'mins';

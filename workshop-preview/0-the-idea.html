@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start here: agents, and why Hermes — workshop guide</title>
+<link rel="stylesheet" href="guide.css">
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Start here</nav>
+
+  <header>
+    <p class="kicker">Start here</p>
+    <h1>What's an agent, and why Hermes?</h1>
+    <p class="lede">Everyone is somewhere on a learning curve with this stuff, and nobody's quite sure where. So before you build anything, here's the ground floor: what an agent actually is, what Hermes is, and why we start people here rather than somewhere else.</p>
+  </header>
+
+  <h2>What's an agent?</h2>
+  <p>You already chat with a model, Claude or ChatGPT. You ask, it answers, and it's done until you ask again. An <strong>agent</strong> is a model that's awake in between: it remembers, it can run on a schedule, and you can hand it a goal and let it go work on it, checking things and coming back to you without being poked each time. Claude Code, Codex, and Cowork are all growing in this direction. You can also build your own, and that's what today is.</p>
+  <div class="note">
+    <strong>The words you'll hear:</strong>
+    <ul style="margin:8px 0 0">
+      <li><strong>Model</strong> — the brain you talk to (Claude, GPT, Sol). The part you can swap.</li>
+      <li><strong>Agent</strong> — a model plus memory, scheduling, tools, and a personality.</li>
+      <li><strong>Framework</strong> — what you build the agent with. Hermes is one; OpenClaw is another.</li>
+      <li><strong>Virtual machine</strong> — a computer you rent in the cloud, separate from your laptop.</li>
+    </ul>
+  </div>
+
+  <h2>What's Hermes?</h2>
+  <p>Hermes is one of those frameworks: the toolkit that wraps a model with memory, scheduling, tools, and an identity so it becomes an agent. Its main alternative is OpenClaw, which came first. Hermes learned from it and built in more guardrails: clear rules for who's allowed to talk to the agent, more caution when it edits its own code, and a smaller, more controlled set of add-ons instead of thousands of community plugins. That extra care is why we start people on Hermes.</p>
+
+  <h2>Why build your own?</h2>
+  <p>Two reasons, and they're the whole pitch.</p>
+  <p><strong>You own it.</strong> With Claude or ChatGPT, the agent's memory and settings live inside someone else's product. With Hermes the agent is just files, its soul and its instructions and its memory, sitting on a machine you control. You can switch the model underneath whenever you want: start on ChatGPT's Codex today, move to Claude or Sol tomorrow, without rebuilding anything or losing what it knows. If you burn through one provider's tokens, you switch to another. The big models would rather keep you locked in. This doesn't.</p>
+  <p><strong>You can put it in a room with other people.</strong> This is the part Claude and Codex can't do yet. Your agent gets an identity that other people can talk to, inside shared channels, answering within rules you set. Most of the second half of this course is about exactly that.</p>
+
+  <h2>When you don't need one</h2>
+  <p>Worth saying plainly: if you just want to check your email, use Claude. Just your calendar, use Codex. You reach for something like Hermes when you want an agent that's more independent, closer to a digital teammate that gets better over time and that you, and people you trust, can talk to. If that's not what you're after, you don't need any of this.</p>
+
+  <h2>Why a blank computer</h2>
+  <p>An agent that can write and run its own code, living on your laptop, can reach everything on your laptop: your files, your tax returns, whatever's there. That's a lot to hand over, and it's how the horror stories happen. So we don't. In Part 1 you'll put your agent on a rented, blank machine that starts with none of your data, and you decide what to give it from there.</p>
+
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">Before you build</span> you should be able to say it back in a sentence: an agent is a model that's awake and acts on its own; Hermes lets you own it and swap the model underneath; and a blank rented machine keeps it away from your real stuff until you choose otherwise. That's the why. Now the how.</span></label></div>
+
+  <div class="pager">
+    <a href="index.html"><span class="dir">Back</span>Workshop guide</a>
+    <a href="1-stand-it-up.html"><span class="dir">Next</span>Part 1: Stand it up</a>
+  </div>
+
+</div>
+<script src="guide.js"></script>
+</body>
+</html>
