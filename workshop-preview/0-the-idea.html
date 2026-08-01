@@ -8,17 +8,30 @@
 </head>
 <body>
 <div class="wrap">
+  <!-- ============================================================
+       EDITING THIS PAGE (see workshop-preview/EDITING.md)
+       A line marked with the pencil sits just above text you can
+       rewrite. Change the words, not the tags: edit what's between
+       a > and the next <, and never change anything inside < >.
+       A line marked WARNING is a command for the agent. You can
+       reword it, but keep the step numbers and the layout.
+       ============================================================ -->
 
   <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Start here</nav>
 
   <header>
     <p class="kicker">Start here</p>
+  <!-- ✏️ edit the page title below -->
     <h1>What's an agent, and why Hermes?</h1>
+  <!-- ✏️ edit the intro below -->
     <p class="lede">A short read before you build anything: what an agent is, and why we start people on Hermes.</p>
   </header>
 
+  <!-- ✏️ edit this heading below -->
   <h2>What's an agent?</h2>
+  <!-- ✏️ edit this paragraph below -->
   <p>You already use a model like Claude or ChatGPT: you ask, it answers, then it waits. An <strong>agent</strong> is a model that keeps working on its own. It remembers what you tell it, and it can run on a schedule or chase a goal without you steering each step. The big assistants are all adding this. Today you build one you own.</p>
+  <!-- ✏️ edit this note below -->
   <div class="note">
     <strong>The words you'll hear:</strong>
     <ul style="margin:8px 0 0">
@@ -29,19 +42,29 @@
     </ul>
   </div>
 
+  <!-- ✏️ edit this heading below -->
   <h2>What's Hermes?</h2>
+  <!-- ✏️ edit this paragraph below -->
   <p>Hermes is the framework you build the agent with. It wraps a model with the memory, scheduling, tools, and identity that make it an agent. The main alternative is OpenClaw, which came first. Hermes came later and added more guardrails: rules for who's allowed to talk to the agent, more caution when it edits its own code, and a smaller set of add-ons rather than thousands of community plugins. That's why we start people on it.</p>
 
+  <!-- ✏️ edit this heading below -->
   <h2>Why build your own?</h2>
+  <!-- ✏️ edit this paragraph below -->
   <p>With Claude or ChatGPT, the agent's memory and settings live inside someone else's product. With Hermes the agent is just files on a machine you control, so you can swap the model underneath whenever you want. Start on ChatGPT's Codex today, move to Claude or Sol tomorrow, and nothing you've set up is lost. Run out of one provider's tokens and you switch to another. The big models would rather keep you locked in; this way you aren't.</p>
+  <!-- ✏️ edit this paragraph below -->
   <p>You can also put it in a room with other people, which Claude and Codex can't do yet. Your agent gets an identity others can talk to in shared channels, answering within rules you set. That's most of the second half of this course.</p>
 
+  <!-- ✏️ edit this heading below -->
   <h2>When you don't need one</h2>
+  <!-- ✏️ edit this paragraph below -->
   <p>If you just want to check your email, use Claude. Just your calendar, use Codex. You want something like Hermes when you're after an agent that's more independent, closer to a teammate that gets better over time and that you and people you trust can talk to. If that's not what you're building, you don't need any of this.</p>
 
+  <!-- ✏️ edit this heading below -->
   <h2>Why a blank computer</h2>
+  <!-- ✏️ edit this paragraph below -->
   <p>An agent that can write and run its own code, sitting on your laptop, can reach everything else on your laptop: your files, your tax returns, whatever is there. You've probably heard the story of someone's whole inbox getting wiped. That's the risk when the agent lives where your data does. So it doesn't. In Part 1 you put your agent on a rented, blank machine with none of your data on it, and you hand over only what you choose.</p>
 
+  <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">Before you build</span> the shape of it: an agent is a model that's awake and acts on its own, Hermes lets you own it and swap the model underneath, and the blank machine keeps it away from your real files until you decide otherwise.</span></label></div>
 
   <div class="pager">

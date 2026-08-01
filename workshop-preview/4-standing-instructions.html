@@ -8,29 +8,49 @@
 </head>
 <body>
 <div class="wrap">
+  <!-- ============================================================
+       EDITING THIS PAGE (see workshop-preview/EDITING.md)
+       A line marked with the pencil sits just above text you can
+       rewrite. Change the words, not the tags: edit what's between
+       a > and the next <, and never change anything inside < >.
+       A line marked WARNING is a command for the agent. You can
+       reword it, but keep the step numbers and the layout.
+       ============================================================ -->
 
   <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Part 4 of 8</nav>
 
   <header>
     <p class="kicker">Part 4</p>
+  <!-- ✏️ edit the page title below -->
     <h1>Standing instructions</h1>
+  <!-- ✏️ edit the intro below -->
     <p class="lede">The soul is who your agent is. Standing instructions are how it behaves when something happens in a shared channel: whether it answers, stays quiet, or brings the request to you. They come with a sensible default baked in, and you can read them and change them whenever you like.</p>
   </header>
 
+  <!-- ✏️ edit this paragraph below -->
   <p>Worth understanding before you start opening your agent up to other people in part 5, because every change you make there is really an edit to these instructions. They only change from your backchannel, and the agent reads the new version back to you after each change so nothing shifts silently.</p>
 
+  <!-- ✏️ edit this heading below -->
   <h2><span class="num">1.</span> Read the instructions it already has</h2>
+  <!-- ✏️ edit this paragraph below -->
   <p>Your agent arrived with a set of standing instructions from the Filament connector. Ask to see them, in your backchannel:</p>
   <p class="prompt-label">Paste to your agent</p>
+  <!-- ⚠️ agent command: reword freely, keep the step numbers and layout -->
   <div class="code"><button class="copy">Copy</button><pre><code>Tell me what your Filament connector standing instructions are.</code></pre></div>
+  <!-- ✏️ edit this paragraph below -->
   <p>The words "Filament connector" matter. Ask for just "your instructions" and the agent may reach for the wrong thing; this phrasing points it at the exact rules that govern shared channels.</p>
+  <!-- ✏️ edit this paragraph below -->
   <p>What comes back describes how it treats a shared channel today: you are its principal, and unless you've said otherwise it won't answer other people's requests or share anything of yours without checking with you first. That's the conservative default you'll loosen from here.</p>
 
+  <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> the agent's current standing instructions, naming you as its principal and describing its default "check with you first" behavior in shared channels.</span></label></div>
 
+  <!-- ✏️ edit this heading below -->
   <h2><span class="num">2.</span> Change them by describing what you want</h2>
+  <!-- ✏️ edit this paragraph below -->
   <p>You don't edit a file by hand. You tell the agent the behavior you want and it updates its own instructions, then reads them back. Here's a useful one to try now, since it sets up the network exercise in part 8. It lets people you trust ask one specific kind of question, without handing over anything sensitive:</p>
   <p class="prompt-label">Paste to your agent — edit the bracketed parts</p>
+  <!-- ⚠️ agent command: reword freely, keep the step numbers and layout -->
   <div class="code tall"><button class="copy">Copy</button><pre><code>Add this to your standing instructions, then read the new version back to me.
 
 When someone in a channel I'm in asks whether I know people in a field or
@@ -43,16 +63,20 @@ that, tell them you're checking with me and bring it to me privately.
 
 This applies only in channels I'm already in with you. Everywhere else,
 your current rules stand.</code></pre></div>
+  <!-- ✏️ edit this paragraph below -->
   <p>Every instruction change has the same shape: what the behavior is, what its limits are, where it applies, and a read-back at the end. The same pattern covers "answer people directly in this one channel," "stay silent in that one," or any rule you add later.</p>
 
+  <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> the agent confirm the edit and read the updated instructions back, with your new rule and its limits stated. If anything is broader or narrower than you meant, say so and it will adjust.</span></label></div>
 
   <figure class="shot">
     <img src="img/fil-set-instructions.png" alt="A backchannel exchange: asking for an instruction change, the agent confirming and reading back what changed">
     <div class="ph">Screenshot coming: fil-set-instructions.png</div>
+  <!-- ✏️ edit this caption below -->
     <figcaption>A rule change in the backchannel: you ask, the agent edits, the agent reads the new version back.</figcaption>
   </figure>
 
+  <!-- ✏️ edit this note below -->
   <div class="note"><strong>Where changes stick, and where they don't:</strong> the agent only rewrites its instructions from this backchannel. If you tell it to change a rule from inside a shared channel, it won't. That's deliberate: it keeps someone else in a room from quietly rewriting how your agent behaves. You'll use that in part 5.</div>
 
   <div class="pager">

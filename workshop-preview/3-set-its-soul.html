@@ -8,21 +8,36 @@
 </head>
 <body>
 <div class="wrap">
+  <!-- ============================================================
+       EDITING THIS PAGE (see workshop-preview/EDITING.md)
+       A line marked with the pencil sits just above text you can
+       rewrite. Change the words, not the tags: edit what's between
+       a > and the next <, and never change anything inside < >.
+       A line marked WARNING is a command for the agent. You can
+       reword it, but keep the step numbers and the layout.
+       ============================================================ -->
 
   <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Part 3 of 8</nav>
 
   <header>
     <p class="kicker">Part 3</p>
+  <!-- ✏️ edit the page title below -->
     <h1>Set its soul</h1>
+  <!-- ✏️ edit the intro below -->
     <p class="lede">Your agent has a file called its soul that holds who it is: what it's for, and how it should talk to you. Right now that file is empty. You fill it by describing the agent you want, in your own words.</p>
   </header>
 
+  <!-- ✏️ edit this paragraph below -->
   <p>We do this now, after you've picked the model, on purpose. The soul conversation runs on your subscription tokens from part 2, so writing it costs you nothing beyond what you already pay.</p>
+  <!-- ✏️ edit this paragraph below -->
   <p>The soul isn't the same as the standing instructions you'll meet in part 4. The soul is who the agent is. Standing instructions are how it behaves in shared channels. Keep the soul to who it is and what it's for, and leave the operating details out.</p>
 
+  <!-- ✏️ edit this heading below -->
   <h2><span class="num">1.</span> Tell it to set its soul</h2>
+  <!-- ✏️ edit this paragraph below -->
   <p>In your backchannel, paste this and then keep typing in your own words:</p>
   <p class="prompt-label">Paste to your agent, then describe the agent you want</p>
+  <!-- ⚠️ agent command: reword freely, keep the step numbers and layout -->
   <div class="code"><button class="copy">Copy</button><pre><code>Let's set your soul. Here's who I want you to be:
 
 You exist to [what it's for — e.g. keep my calendar and email from
@@ -33,11 +48,15 @@ language, no filler].
 
 You are not [what it should stay out of — e.g. a replacement for my own
 judgment on anything that matters].</code></pre></div>
+  <!-- ✏️ edit this paragraph below -->
   <p>Say "soul" the way you'd say body and soul. That word is how Hermes knows you mean its identity file, not a passing instruction. You can rewrite it any time, so don't overthink the first pass.</p>
 
+  <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> the agent confirm what it saved and describe its role back to you in its own words. If the description matches what you meant, the soul is set. If it reads as generic, tell it what's off and it will revise.</span></label></div>
 
+  <!-- ✏️ edit this heading below -->
   <h2><span class="num">2.</span> Keep the soul about identity, not plumbing</h2>
+  <!-- ✏️ edit this paragraph below -->
   <p>Agents tend to stuff operating details into the soul: file paths, tool rules, which integration lives where. That belongs elsewhere. If your agent starts doing it, tell it to pull that out. A soul that stays about who the agent is stays readable, and it's easier to hand to someone else later if this agent ends up working alongside other people.</p>
 
   <div class="pager">
