@@ -48,18 +48,19 @@
   <p>Confirm and launch. It takes a minute to come up.</p>
   <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> your agent listed on your Agent37 dashboard with a green or "running" status.</span></label></div>
-
   <!-- ✏️ edit this paragraph below -->
-  <p>Give it a name, in case you're inspired to create more agents.</p>
+  <p>Give it a name in case you're inspired to create more agents</p>
   <figure class="shot">
     <img src="img/a37-agent-name.png" alt="Naming the agent in Agent37">
     <div class="ph">Screenshot coming: a37-agent-name.png</div>
   <!-- ✏️ edit this caption below -->
     <figcaption>Give your agent a name.</figcaption>
   </figure>
+  <!-- ✏️ edit this paragraph below -->
+  <p>And now you actually have a working Hermes agent live on your machine right now live on this virtual computer right now! But there are a few more things we're going to do to configure it before we start chatting with it.</p>
 
   <!-- ✏️ edit this heading below -->
-  <h2><span class="num">2.</span> Open its terminal (two minutes of basics)</h2>
+  <h2><span class="num">2.</span> Open its terminal</h2>
   <!-- ✏️ edit this paragraph below -->
   <p>Your agent runs on its own machine, and that machine has a terminal you can open right in the browser from the agent's page on Agent37.</p>
   <figure class="shot">
@@ -70,14 +71,6 @@
   </figure>
   <!-- ✏️ edit this paragraph below -->
   <p>Terminal for the uninitiated just means we're going to give our computer instructions directly. Don't worry. There are only three minutes. Three to five minutes of steps. Three commands here, and then we're going to leave. In three minutes, we are done.</p>
-  <!-- ✏️ edit this paragraph below -->
-  <p>You'll paste a few commands into it today. The three things worth knowing:</p>
-  <!-- ✏️ edit this list below -->
-  <ul>
-    <li><strong>Paste</strong> with right-click (or Cmd/Ctrl+V, depending on your browser).</li>
-    <li><strong>Up arrow</strong> brings back the last command, so you never retype.</li>
-    <li><strong>Ctrl+C</strong> cancels whatever's running if something looks stuck.</li>
-  </ul>
   <figure class="shot">
     <img src="img/a37-terminal.png" alt="The agent's browser terminal at a fresh prompt">
     <div class="ph">Screenshot coming: a37-terminal.png</div>
@@ -85,12 +78,49 @@
     <figcaption>The browser terminal, waiting at a prompt.</figcaption>
   </figure>
   <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a terminal with a blinking cursor at a prompt. Type <code>echo hello</code> and press Enter. It should echo back.</span></label></div>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a terminal with a cursor at a prompt.</span></label></div>
+
+  <!-- ✏️ edit this paragraph below -->
+  <p>The agent and the model are separate things. That's one of the reasons to own your own agent: you pick which model powers it, and you can change your mind later without losing anything.</p>
 
   <!-- ✏️ edit this heading below -->
-  <h2><span class="num">3.</span> Connect it to Filament</h2>
+  <h2><span class="num">3.</span> Log it into ChatGPT</h2>
+  <!-- ✏️ edit this paragraph below -->
+  <p>An agent can do a surprising amount of work in one run. If it is connected to a pay-per-use API, a long task (or a scheduled task you forgot about) can quietly use $$.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>For today, our recommendation is <strong>ChatGPT Plus</strong>, currently $20 per month, because Anthropic does not let you use your subscription for agents like Hermes, only API tokens (aka you could have a surprise large bill). You can always hook it up to the AI subscription you already pay forn (even Gemini) just be conscious of your usage.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>In the agent's terminal, run:</p>
+  <!-- ⚠️ agent command: reword freely, keep the step numbers and layout -->
+  <div class="code"><button class="copy">Copy</button><pre><code>hermes model</code></pre></div>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Pick the provider you have a subscription with and follow the login flow it gives you (it will hand you a link to open in your browser). The sign-in code shows up <strong>in the terminal</strong>, not the browser, so keep an eye there.</p>
+  <figure class="shot">
+    <img src="img/a37-model-login.png" alt="Hermes model selection and subscription login">
+    <div class="ph">Screenshot coming: a37-model-login.png</div>
+  <!-- ✏️ edit this caption below -->
+    <figcaption>The model picker.</figcaption>
+  </figure>
   <!-- ✏️ edit this note below -->
-  <div class="note"><strong>First, update Filament.</strong> In the Filament menu (top left, by the Apple menu) choose <strong>Check for updates</strong> and restart if it offers a new version. An out-of-date app is the usual reason connecting misbehaves. If a screen ever comes up blank, press Cmd+R (Ctrl+R on Windows) to refresh it, that's a known bug and not something you did. If Filament asks about notifications, "Ask later" is fine.</div>
+  <div class="note"><strong>Sometimes ChatGPT asks for a settings change to login this way:</strong> open ChatGPT in another tab → <strong>Settings</strong> → <strong>Security and login</strong>, scroll to the bottom, and turn on <strong>device code authorization for Codex</strong>. Then re-click the link from the terminal.</div>
+  <!-- ✏️ edit this paragraph below -->
+  <p>When it asks which model to run, ChatGPT gives you a few. GPT-5.5 is a fine default for today. GPT-5.6 Sol is their most capable (their answer to Fable); it burns through subscription tokens faster but costs you nothing extra, so use it if you want. You can switch any time.</p>
+  <!-- ✏️ edit this checkpoint below -->
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> the login confirmed in the terminal.</span></label></div>
+
+  <!-- ✏️ edit this heading below -->
+  <h2><span class="num">4.</span> Turn off a compaction alert</h2>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Hermes shows a recurring warning that gets in the way while you work. It is very annoying so pro tip, turn it off once now. Run this in the terminal:</p>
+  <!-- ⚠️ agent command: reword freely, keep the step numbers and layout -->
+  <div class="code"><button class="copy">Copy</button><pre><code>hermes config set compression.codex_gpt55_autoraise false</code></pre></div>
+  <!-- ✏️ edit this checkpoint below -->
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a confirmation that the setting changed. This one is just housekeeping.</span></label></div>
+
+  <!-- ✏️ edit this heading below -->
+  <h2><span class="num">5.</span> Connect it to Filament</h2>
+  <!-- ✏️ edit this note below -->
+  <div class="note">If you don't have the desktop app, we recommend it so you don't miss a response from your agent 👉 filament.dm/download<br><br><strong>If you already have it, make sure it's on the latest version.</strong> In the Filament menu (top left, by the Apple menu) choose <strong>Check for updates</strong> and restart if it offers a new version.</div>
   <!-- ✏️ edit this paragraph below -->
   <p>In the Filament app, open the <strong>Agents</strong> tab (the bow-tie icon in the left rail) and choose to connect a Hermes agent. Filament gives you a one-line connect command with a token in it.</p>
   <figure class="shot">
@@ -100,20 +130,25 @@
     <figcaption>The Agents tab, where your connect command comes from.</figcaption>
   </figure>
   <!-- ✏️ edit this paragraph below -->
-  <p>Copy that command, go back to the agent's terminal, and paste it in. That token is a key to your agent. Treat it like a password and don't post it anywhere.</p>
+  <p>Click add an agent, give it a name, and even a profile photo.</p>
   <figure class="shot">
-    <img src="img/a37-connect-ok.png" alt="Terminal showing a successful Filament connect">
-    <div class="ph">Screenshot coming: a37-connect-ok.png</div>
+    <img src="img/fil-name-agent.png" alt="Naming your agent in Filament">
+    <div class="ph">Screenshot coming: fil-name-agent.png</div>
   <!-- ✏️ edit this caption below -->
-    <figcaption>What a successful connect looks like.</figcaption>
+    <figcaption>Name your agent in Filament.</figcaption>
   </figure>
   <!-- ✏️ edit this paragraph below -->
-  <p>Two things happen when it connects: your agent shows up in Filament as a member you can talk to, and Filament creates a private channel between just the two of you. That private channel is called your <strong>backchannel</strong>. You'll use it constantly, and part 5 explains how it works.</p>
+  <p>Copy that command, go back to the agent's terminal, and paste it in. That token is a key to your agent. Treat it like a password and don't post it anywhere.</p>
+  <figure class="shot">
+    <img src="img/a37-connect-ok.png" alt="The Filament connect command ready to paste">
+    <div class="ph">Screenshot coming: a37-connect-ok.png</div>
+  <!-- ✏️ edit this caption below -->
+    <figcaption>The connect command in Filament.</figcaption>
+  </figure>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Two things happen when it connects: your agent shows up in Filament as a member you can talk to, and Filament creates a private channel for just the two of you. That private channel is called your <strong>backchannel</strong>. You'll use it constantly, and Part 5 explains how it works.</p>
   <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a private channel with your agent in your Filament app. Say <code>hi</code> in it. You should get a short, warm greeting back.</span></label></div>
-
-  <!-- ✏️ edit this line below -->
-  <p class="stuck">Nothing came back? Give it a minute; first wake can be slow. Still nothing: raise your hand.</p>
 
   <div class="pager">
     <a href="0-the-idea.html"><span class="dir">Back</span>Start here: agents, and why Hermes</a>
