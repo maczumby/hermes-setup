@@ -6,13 +6,12 @@
     { href: 'index.html', title: 'Course home', mins: 0, checks: 0, node: '⌂' },
     { href: '0-the-idea.html', title: 'Agents, and why Hermes', mins: 6, checks: 1, node: 'i' },
     { href: '1-stand-it-up.html', title: 'Stand it up', mins: 30, checks: 5, node: '1' },
-    { href: '2-pick-the-brain.html', title: 'Pick the brain', mins: 10, checks: 3, node: '2' },
-    { href: '3-set-its-soul.html', title: 'Set its job and personality', mins: 10, checks: 1, node: '3' },
-    { href: '4-standing-instructions.html', title: 'Standing instructions', mins: 10, checks: 2, node: '4' },
-    { href: '5-backchannel-and-permissions.html', title: 'Backchannel & permissions', mins: 25, checks: 2, node: '5' },
-    { href: '6-see-what-changed.html', title: 'See what changed', mins: 10, checks: 2, node: '6' },
-    { href: '7-research-agent.html', title: 'The research agent', mins: 15, checks: 2, node: '7' },
-    { href: '8-relationship-agent.html', title: 'Your personal CRM agent', mins: 75, checks: 7, node: '8' },
+    { href: '2-set-its-soul.html', title: 'Set its job and personality', mins: 10, checks: 1, node: '2' },
+    { href: '3-standing-instructions.html', title: 'Standing instructions', mins: 10, checks: 2, node: '3' },
+    { href: '4-backchannel-and-permissions.html', title: 'Backchannel & permissions', mins: 25, checks: 2, node: '4' },
+    { href: '5-see-what-changed.html', title: 'See what changed', mins: 10, checks: 2, node: '5' },
+    { href: '6-research-agent.html', title: 'The research agent', mins: 15, checks: 2, node: '6' },
+    { href: '7-relationship-agent.html', title: 'Your personal CRM agent', mins: 75, checks: 7, node: '7' },
   ];
 
   var dir = location.pathname.replace(/[^/]*$/, '');
@@ -160,7 +159,7 @@
       box.className = 'continue';
       box.innerHTML =
         '<div><strong>' + (p.done ? 'Pick up where you left off' : 'Ready when you are') + '</strong>' +
-        '<div class="sub">' + (p.done ? p.done + ' of ' + p.total + ' checkpoints done.' : 'Eight modules, about two hours end to end.') + '</div></div>' +
+        '<div class="sub">' + (p.done ? p.done + ' of ' + p.total + ' checkpoints done.' : 'Seven modules, about two hours end to end.') + '</div></div>' +
         '<a class="cta" href="' + next.href + '">' + (p.done ? 'Continue' : 'Start') + ': ' + next.title + ' →</a>';
       var header = wrap.querySelector('header');
       header.insertAdjacentElement('afterend', box);
