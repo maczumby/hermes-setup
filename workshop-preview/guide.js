@@ -7,7 +7,7 @@
     { href: '0-the-idea.html', title: 'Agents, and why Hermes', mins: 6, checks: 1, node: 'i' },
     { href: '1-stand-it-up.html', title: 'Stand it up', mins: 20, checks: 3, node: '1' },
     { href: '2-pick-the-brain.html', title: 'Pick the brain', mins: 10, checks: 3, node: '2' },
-    { href: '3-set-its-soul.html', title: 'Set its soul', mins: 10, checks: 1, node: '3' },
+    { href: '3-set-its-soul.html', title: 'Set its job and personality', mins: 10, checks: 1, node: '3' },
     { href: '4-standing-instructions.html', title: 'Standing instructions', mins: 10, checks: 2, node: '4' },
     { href: '5-backchannel-and-permissions.html', title: 'Backchannel & permissions', mins: 25, checks: 2, node: '5' },
     { href: '6-see-what-changed.html', title: 'See what changed', mins: 10, checks: 2, node: '6' },
