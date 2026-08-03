@@ -61,7 +61,7 @@
     if (mod.href === file) li.classList.add('here');
     var label = mod.node || String(idx);
     var meta = mod.checks
-      ? (got + '/' + mod.checks + ' · ' + mod.mins + ' min')
+      ? (got + '/' + mod.checks)
       : 'start here';
     li.innerHTML =
       '<a href="' + mod.href + '"><span class="node">' + label + '</span>' +
@@ -99,7 +99,7 @@
       var got = checkedCount(mod);
       li.classList.toggle('done', mod.checks > 0 && got === mod.checks);
       li.classList.toggle('lit', got > 0 && got < mod.checks);
-      if (mod.checks) li.querySelector('.m').textContent = got + '/' + mod.checks + ' · ' + mod.mins + ' min';
+      if (mod.checks) li.querySelector('.m').textContent = got + '/' + mod.checks;
     });
   }
 
@@ -121,8 +121,8 @@
       var meta = document.createElement('p');
       meta.className = 'module-meta';
       meta.textContent = /^\d+$/.test(current.node || '')
-        ? 'Module ' + current.node + ' of ' + numberedTotal + ' · about ' + current.mins + ' min'
-        : 'About ' + current.mins + ' min · read this first';
+        ? 'Module ' + current.node + ' of ' + numberedTotal
+        : 'Read this first';
       kicker.insertAdjacentElement('afterend', meta);
     }
   }
@@ -143,10 +143,6 @@
       node.className = 'node';
       node.textContent = mod.node || String(i + 1);
       card.insertBefore(node, card.firstChild);
-      var mins = document.createElement('span');
-      mins.className = 'mins';
-      mins.textContent = mod.mins + ' min';
-      card.appendChild(mins);
       if (checkedCount(mod) === mod.checks) card.classList.add('done');
     });
     var next = null;
@@ -159,7 +155,7 @@
       box.className = 'continue';
       box.innerHTML =
         '<div><strong>' + (p.done ? 'Pick up where you left off' : 'Ready when you are') + '</strong>' +
-        '<div class="sub">' + (p.done ? p.done + ' of ' + p.total + ' checkpoints done.' : 'Seven modules, about two hours end to end.') + '</div></div>' +
+        '<div class="sub">' + (p.done ? p.done + ' of ' + p.total + ' checkpoints done.' : 'Work through it at your own pace.') + '</div></div>' +
         '<a class="cta" href="' + next.href + '">' + (p.done ? 'Continue' : 'Start') + ': ' + next.title + ' →</a>';
       var header = wrap.querySelector('header');
       header.insertAdjacentElement('afterend', box);
