@@ -52,3 +52,11 @@ exists, and I push them as they land.
 ## Not yours to shoot
 
 - `audit-page.png` — generated from the audit kit; already in place.
+
+Part 8 additions (CRM module, 2026-08-03):
+11. `consent-metadata.png` — the Google consent screen for the email
+    connection, with the metadata scope text ("...but not the email body")
+    readable. Capture during any test connect; crop out your address.
+12. `obs-login.png` — the map's password login page ("This map is private").
+13. `warmth-table.png` — a warmth table with the coverage banner visible and
+    at least one "no data" row in frame. Blur names if using real data.

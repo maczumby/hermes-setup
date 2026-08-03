@@ -12,7 +12,7 @@
     { href: '5-backchannel-and-permissions.html', title: 'Backchannel & permissions', mins: 25, checks: 2, node: '5' },
     { href: '6-see-what-changed.html', title: 'See what changed', mins: 10, checks: 2, node: '6' },
     { href: '7-research-agent.html', title: 'The research agent', mins: 15, checks: 2, node: '7' },
-    { href: '8-relationship-agent.html', title: 'The relationship agent', mins: 25, checks: 3, node: '8' },
+    { href: '8-relationship-agent.html', title: 'Your personal CRM agent', mins: 75, checks: 7, node: '8' },
   ];
 
   var dir = location.pathname.replace(/[^/]*$/, '');
