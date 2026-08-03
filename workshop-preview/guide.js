@@ -5,13 +5,10 @@
   var COURSE = [
     { href: 'index.html', title: 'Course home', mins: 0, checks: 0, node: '⌂' },
     { href: '0-the-idea.html', title: 'Agents, and why Hermes', mins: 6, checks: 1, node: 'i' },
-    { href: '1-stand-it-up.html', title: 'Stand it up', mins: 30, checks: 5, node: '1' },
-    { href: '2-set-its-soul.html', title: 'Set its job and personality', mins: 10, checks: 1, node: '2' },
-    { href: '3-standing-instructions.html', title: 'Standing instructions', mins: 10, checks: 2, node: '3' },
-    { href: '4-backchannel-and-permissions.html', title: 'Backchannel & permissions', mins: 25, checks: 2, node: '4' },
-    { href: '5-see-what-changed.html', title: 'See what changed', mins: 10, checks: 2, node: '5' },
-    { href: '6-research-agent.html', title: 'The research agent', mins: 15, checks: 2, node: '6' },
-    { href: '7-relationship-agent.html', title: 'Your personal CRM agent', mins: 75, checks: 7, node: '7' },
+    { href: '1-stand-it-up.html', title: 'Stand it up', mins: 30, checks: 11, node: '1' },
+    { href: '2-personalize-it.html', title: 'Personalize it', mins: 10, checks: 1, node: '2' },
+    { href: '3-research-agent.html', title: 'The research agent', mins: 15, checks: 2, node: '3' },
+    { href: '4-relationship-agent.html', title: 'Your personal CRM agent', mins: 75, checks: 7, node: '4' },
   ];
 
   var dir = location.pathname.replace(/[^/]*$/, '');
