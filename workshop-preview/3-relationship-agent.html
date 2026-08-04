@@ -20,190 +20,112 @@
   <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Part 3 of 3</nav>
 
   <header>
-    <p class="kicker">Part 3 — your personal CRM agent</p>
+    <p class="kicker">Part 3</p>
   <!-- ✏️ edit the page title below -->
-    <h1>Your network, remembered</h1>
+    <h1>Your personal CRM agent</h1>
   <!-- ✏️ edit the intro below -->
-    <p class="lede">Your network is your business, and right now it lives in a CSV you've never opened and a memory that leaks. In the next hour your agent gets a copy it can actually reason over — and by tomorrow it will owe you one real follow-up. Order matters: calendar first (your agent already sees it), then LinkedIn, then we lock it down, and only then do you decide about email.</p>
+    <p class="lede">This part turns your LinkedIn export into a map your agent can answer questions from, first for you, and then, with rules you set, for <em>other people</em>. We do it in teams because the interesting part is what happens when several networks end up in one channel.</p>
   </header>
 
   <!-- ✏️ edit this heading below -->
-  <h2><span class="num">1.</span> Start your LinkedIn export, then install the tool</h2>
+  <h2><span class="num">1.</span> Get your LinkedIn export</h2>
   <!-- ✏️ edit this paragraph below -->
-  <p>First, a browser errand whose result arrives by email in about ten minutes — start it now so it's ready when we need it. If you did this in the pre-work, skip to the paste. Open <a href="https://www.linkedin.com/mypreferences/d/download-my-data" target="_blank" rel="noopener">Get a copy of your data</a>, pick the <strong>top option, the larger archive</strong> (that's the one with your connections in it), and submit. When LinkedIn's email arrives, download the zip. Don't unzip it.</p>
+  <p>You started this at the beginning (if not, do it now; LinkedIn takes a while to prepare it): open <a href="https://www.linkedin.com/mypreferences/d/download-my-data" target="_blank" rel="noopener">Get a copy of your data</a>, pick the <strong>top option, the larger data archive</strong> (not the "want something in particular" choice below it), and download the zip when the email arrives. The big archive is the one that includes your connections.</p>
   <figure class="shot">
-    <img src="img/li-export.png" alt="LinkedIn export settings">
+    <img src="img/li-export.png" alt="Where the LinkedIn export lives in settings">
     <div class="ph">Screenshot coming: li-export.png</div>
   <!-- ✏️ edit this caption below -->
     <figcaption>Where the export lives in LinkedIn's settings.</figcaption>
   </figure>
-  <p class="prompt-label">Paste to your agent — in your backchannel (<a href="pastes/crm-install.md">raw file</a>)</p>
-  <!-- ⚠️ agent command: reword freely, keep the layout -->
-  <div class="code"><button class="copy">Copy</button><pre><code>Read this and set yourself up with it:
-https://raw.githubusercontent.com/maczumby/network-observatory/main/skills/network-observatory/SKILL.md
-
-This is going to become my personal relationship memory. Don't ask me for
-any files yet — my LinkedIn export is still on its way. When you're set up,
-tell me in one short paragraph what this tool will let me do, then stop
-and wait for me.</code></pre></div>
   <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> your agent describe, in its own words, a map, a memory, and follow-up reminders — and then stop and wait. If it starts asking for files, tell it to wait.</span></label></div>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now have</span> a zip file from LinkedIn on your computer. Don't unzip it. The tool reads it as-is.</span></label></div>
 
   <!-- ✏️ edit this heading below -->
-  <h2><span class="num">2.</span> Calendar first — the quarter you already lived</h2>
+  <h2><span class="num">2.</span> Build your map</h2>
   <!-- ✏️ edit this paragraph below -->
-  <p>While LinkedIn prepares your export, use something your agent can already see. You upload nothing and grant nothing new in this step — and notice that the agent asks before it remembers a single new person. That's the pattern for everything today.</p>
-  <p class="prompt-label">Paste to your agent (<a href="pastes/crm-calendar.md">raw file</a>)</p>
-  <!-- ⚠️ agent command: reword freely, keep the layout -->
-  <div class="code tall"><button class="copy">Copy</button><pre><code>Before we touch LinkedIn: you can already see my calendar. Look at my
-meetings from the last 90 days and add them to my new relationship memory.
-
-Rules: who and when only — never store meeting titles, descriptions, or
-locations. Skip anything with more than about 10 people (webinars aren't
-relationships), and skip anything that isn't a real person. Before you
-create a record for anyone new, show me the list of names and let me
-confirm who's worth tracking — I'll say yes or no per person.
-
-When you're done, tell me three things: how many meetings you found, how
-many people that covers, and the three people I've met with most. Then stop.</code></pre></div>
-  <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a list of names to confirm, then a summary: how many meetings, how many people, your top three. If your agent can't see your calendar, raise your hand.</span></label></div>
-
-  <!-- ✏️ edit this heading below -->
-  <h2><span class="num">3.</span> The map — and the moment two lives connect</h2>
+  <p>The tool is a public repo, so there's nothing to request. Upload the zip to your agent in the backchannel and paste:</p>
+  <p class="prompt-label">Paste to your agent — with the zip attached</p>
+  <!-- ⚠️ agent command: reword freely, keep the step numbers and layout -->
+  <div class="code"><button class="copy">Copy</button><pre><code>git clone https://github.com/maczumby/network-observatory.git, then set up the
+network-observatory tool and build my map from this LinkedIn export. Read its
+CLAUDE.md, import my connections, build the map, and send me the
+observatory.html file to open. You don't need to unzip anything.</code></pre></div>
   <!-- ✏️ edit this paragraph below -->
-  <p>Your export should have arrived by now. This step builds the star map, then something better: your agent notices that people from your calendar might be people from your LinkedIn, and asks you — one at a time, reversibly — whether they're the same person.</p>
-  <p class="prompt-label">Paste to your agent — with your LinkedIn zip attached, still zipped (<a href="pastes/crm-linkedin.md">raw file</a>)</p>
-  <!-- ⚠️ agent command: reword freely, keep the layout -->
-  <div class="code tall"><button class="copy">Copy</button><pre><code>Here's my LinkedIn export. Import it, build my map, and get me a link I can
-open in my browser. Then read me the summary in plain language: how many
-people, over how many years, my top companies.
-
-After that, check whether any of the calendar people you already know match
-my LinkedIn connections. Show me each match one at a time as a plain
-question — I'll confirm or reject each one, and I know every confirmed
-match can be undone later.
-
-When my map link works, offer me three questions I could ask about my
-network. If you offer to password-protect the link, tell me "not yet" —
-we're doing that together in a few minutes.</code></pre></div>
+  <p>You get back a single file. Open it and that's your network as a star map: search anyone, color by company or seniority, click a person for details. Everything ran on your agent's machine with your data; nothing was uploaded anywhere.</p>
   <figure class="shot">
-    <img src="img/obs-starmap.png" alt="A network observatory star map">
+    <img src="img/obs-starmap.png" alt="A network as a star map">
     <div class="ph">Screenshot coming: obs-starmap.png</div>
   <!-- ✏️ edit this caption below -->
-    <figcaption>Your network as a star field. Search a name. Click a star.</figcaption>
+    <figcaption>A network as a star map.</figcaption>
   </figure>
   <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> your map — and at least one match question like "is the Sam from your calls Sam Rivera at Walmart?" Say yes only if you're sure. No is free; yes can be undone.</span></label></div>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> your map, and the agent's summary of what it imported (how many people, what span of years, top companies).</span></label></div>
+
+  <!-- ✏️ edit this heading below -->
+  <h2><span class="num">3.</span> Give it the role, with sharing rules</h2>
   <!-- ✏️ edit this paragraph below -->
-  <p>Now make it yours. Pick a company you actually want in the door at this quarter, and fill in the blank:</p>
-  <p class="prompt-label">Paste to your agent — fill in the blank first (<a href="pastes/crm-first-question.md">raw file</a>)</p>
-  <!-- ⚠️ agent command: reword freely, keep the layout -->
-  <div class="code"><button class="copy">Copy</button><pre><code>Who do I know at ________? For the best two or three, tell me who they are
-and, if you know, when we were last actually in touch.</code></pre></div>
+  <p>The next paste is what makes this a <em>relationship agent</em> rather than a chart. It sets what it does for you privately, and (read this part carefully before you send it) what it may share when other people ask:</p>
+  <p class="prompt-label">Paste to your agent — in the backchannel (<a href="pastes/crm-agent.md">raw file</a>)</p>
+  <!-- ⚠️ agent command: reword freely, keep the step numbers and layout -->
+  <div class="code tall"><button class="copy">Copy</button><pre><code>I want you to act as my personal relationship agent, built on the network
+map and relationship memory you set up from my LinkedIn export.
+
+Read all of this before you change anything.
+
+YOUR JOB
+Help me be a better connector. You know who I'm connected to, where they
+work, and what I've logged about them. Use it to answer my questions, jog my
+follow-ups, and help other people tap my network, within rules I set.
+
+WHAT YOU DO FOR ME (in the backchannel, full access)
+- "Who do I know at X / in Y field?": answer from the map, with names.
+- "When did I last talk to Z, what do I owe them?": answer from the
+  relationship memory, citing where each fact came from.
+- After I meet someone, I'll tell you; log it.
+- Draft outreach only from facts you have. Never invent shared history.
+  Never send anything. Drafts come to me.
+
+WHAT YOU DO FOR OTHERS (in shared channels, when asked)
+When someone in a shared channel asks whether I know someone ("does she
+know anyone in climate tech?"), you may:
+- Say whether my network is strong or thin in that area, in general terms.
+- Suggest up to three names with public profile links, if the connection is
+  obviously public (same company, public role).
+You may NOT share: contact details, my notes or history with anyone, how
+well I actually know someone, or anything from my email or calendar. When a
+request needs any of that, tell them you're checking with me, and bring it
+to me via message_principal.
+
+CHANGES TO MAKE NOW
+
+1. Update your standing instructions with the shared-channel rules above,
+   plus this line: my word in any channel overrides these rules in the
+   moment.
+2. Append a change-note:
+   &gt; change-note &lt;today's date&gt;: became my relationship agent; may suggest
+   public connections in shared channels, asked by &lt;my name&gt; in the
+   backchannel.
+
+CONFIRM BEFORE YOU'RE LIVE
+Read your saved instructions back to me, then answer one trial question from
+me in the backchannel and tell me how you'd answer the same question if a
+stranger asked it in a shared channel, so I can hear the difference.</code></pre></div>
   <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> two or three names as links — and because of the calendar step, some answers carry a real date. That date is the difference between a contact list and a memory.</span></label></div>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now hear</span> the difference in the agent's own words: the full answer it gives you vs. the bounded one it gives a stranger. If those sound the same, the rules didn't land. Raise your hand.</span></label></div>
 
   <!-- ✏️ edit this heading below -->
-  <h2><span class="num">4.</span> Lock it — security you can touch</h2>
+  <h2><span class="num">4.</span> The team moment</h2>
   <!-- ✏️ edit this paragraph below -->
-  <p>Your map link works right now, and it's public: anyone with the URL sees your network. Feel the difference between trusting a promise and trusting a lock. Pick a real password (your password manager works here — it's a normal login page, not a browser popup) and send this in your backchannel only, never in a shared channel:</p>
-  <p class="prompt-label">Paste to your agent — with your password filled in (<a href="pastes/crm-lock.md">raw file</a>)</p>
-  <!-- ⚠️ agent command: reword freely, keep the layout -->
-  <div class="code"><button class="copy">Copy</button><pre><code>Lock my map link with a password. Set it to: ____________
-Confirm the lock is actually working before you tell me it's done, then
-send me the link again.</code></pre></div>
-  <figure class="shot">
-    <img src="img/obs-login.png" alt="The map's password login page">
-    <div class="ph">Screenshot coming: obs-login.png</div>
-  <!-- ✏️ edit this caption below -->
-    <figcaption>The lock you set yourself, thirty seconds ago, in chat.</figcaption>
-  </figure>
-  <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a login page when you refresh your map link. Log in. The lock survives restarts, and only a scrambled version of your password is stored anywhere.</span></label></div>
-
-  <!-- ✏️ edit this heading below -->
-  <h2><span class="num">5.</span> The email decision — an honest fork</h2>
-  <!-- ✏️ edit this paragraph below -->
-  <p>You already have a working CRM: calendar plus LinkedIn is real. Email makes the warmth picture much deeper, because most professional touch happens in email — but it's the one step today that grants new access, so here's the full price tag. The connection can only ever see <strong>who you emailed and when</strong> — never subjects, never bodies, never attachments. Google's servers enforce that, not a promise. The costs while the app is in Google's testing program: an "unverified app" warning (expected — you'll see it), your Gmail must be on Mari's tester list first, and Google asks you to reconnect once a week (one click; nothing is lost in between). Yes next month works exactly as well as yes today.</p>
-  <figure class="shot">
-    <img src="img/consent-metadata.png" alt="Google consent screen showing metadata-only access">
-    <div class="ph">Screenshot coming: consent-metadata.png</div>
-  <!-- ✏️ edit this caption below -->
-    <figcaption>Google's own words: metadata, "but not the email body."</figcaption>
-  </figure>
-  <!-- ✏️ edit this paragraph below -->
-  <p><strong>If yes:</strong> paste the block below. Your agent sends you to a Connect page; enter your Gmail there, then <strong>copy the command the page shows and paste it back to your agent before anything else</strong> — it's shown only once. Then approve the Google screen. One quirk: after your agent runs the command, start a fresh chat before testing — the connection appears in the next session.</p>
-  <p class="prompt-label">Paste to your agent — only if you're opting in (<a href="pastes/crm-email-optin.md">raw file</a>)</p>
-  <!-- ⚠️ agent command: reword freely, keep the layout -->
-  <div class="code"><button class="copy">Copy</button><pre><code>I want to add the email connection we discussed — the one that can only
-ever see who I emailed and when, never the messages themselves. Walk me
-through it one step at a time, starting with the Connect page link, and
-wait for me at each step. If Google tells me "access denied," tell me
-exactly what to send Mari.</code></pre></div>
-  <!-- ✏️ edit this paragraph below -->
-  <p>Once the connection tests clean, set the sweep running — it works in the background while we finish:</p>
-  <p class="prompt-label">Paste to your agent (<a href="pastes/crm-email-sweep.md">raw file</a>)</p>
-  <!-- ⚠️ agent command: reword freely, keep the layout -->
-  <div class="code tall"><button class="copy">Copy</button><pre><code>Now go through my email history and add it to my relationship memory —
-who wrote to whom and when, nothing else. Skip newsletters, robots, and
-anything that isn't a person; when you can't tell, ask me instead of
-guessing. Afterwards, show me any new identity matches one at a time,
-build my warmth table and send me the link, and answer one question:
-who have I gone cold on that I probably shouldn't have?</code></pre></div>
-  <!-- ✏️ edit this paragraph below -->
-  <p><strong>If no (or not yet):</strong> you sit out nothing. Send this instead:</p>
-  <p class="prompt-label">Paste to your agent — the no-email path, equally real</p>
-  <!-- ⚠️ agent command: reword freely, keep the layout -->
-  <div class="code"><button class="copy">Copy</button><pre><code>Build my warmth table from what you have so far and send me the link.
-Then: who should I reach out to this week, and why?</code></pre></div>
-  <figure class="shot">
-    <img src="img/warmth-table.png" alt="The warmth table with coverage banner and a no-data row">
-    <div class="ph">Screenshot coming: warmth-table.png</div>
-  <!-- ✏️ edit this caption below -->
-    <figcaption>Notice "no data" — unmeasured is never called cold. It refuses to guess.</figcaption>
-  </figure>
-  <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a warmth table link (behind your password). The banner up top says how much of your network is actually measured — what it doesn't know, before what it knows.</span></label></div>
-
-  <!-- ✏️ edit this heading below -->
-  <h2><span class="num">6.</span> One real follow-up, then tell the room</h2>
-  <!-- ✏️ edit this paragraph below -->
-  <p>Don't invent one. Think of the follow-up that's been sitting in the back of your head this whole session — the intro you promised, the deck you owe, the person you keep meaning to circle back to. That one. Fill in all three blanks:</p>
-  <p class="prompt-label">Paste to your agent (<a href="pastes/crm-first-loop.md">raw file</a>)</p>
-  <!-- ⚠️ agent command: reword freely, keep the layout -->
-  <div class="code"><button class="copy">Copy</button><pre><code>Remind me to follow up with ________ about ________ by ________.
-Then read the reminder back to me so I know it stuck, and tell me how
-I'll hear about it when it's due. After that, one last question:
-who else have I left hanging?</code></pre></div>
-  <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now hear</span> your follow-up read back with a due date. That's your agent's first promise to you. Tomorrow it starts paying rent.</span></label></div>
-  <!-- ✏️ edit this paragraph below -->
-  <p>Last move: post one line in <strong>#network-wins</strong> — the shape of your win, not your notes. A first name or a role is plenty:</p>
-  <!-- ⚠️ agent command: reword freely, keep the layout -->
-  <div class="code"><button class="copy">Copy</button><pre><code>First win: my agent reminded me I owe ___ a ___ — due ___.
-First surprise: it knew ___ that I'd forgotten.</code></pre></div>
-  <!-- ✏️ edit this paragraph below -->
-  <p>And the standing ritual: every Monday, ask your agent <em>"what's on my radar this week?"</em> When it surfaces something good, post it here. A room of operators whose agents each know one network — this channel is where those networks start finding each other.</p>
-
-  <!-- ✏️ edit this heading below -->
-  <h2><span class="num">7.</span> Later, at home: let your networks talk</h2>
-  <!-- ✏️ edit this paragraph below -->
-  <p>There's a second act when you're ready: give your agent rules for what it may say about your network when <em>other people</em> ask in shared channels ("does she know anyone in climate tech?"), then put a few agents in one channel and watch several networks become visible without anyone handing over their data. The paste that sets the rules — including everything your agent may NOT share — is <a href="pastes/crm-agent.md">here</a>. Do it after the workshop, read the rules before you send them, and tighten anything that makes you wince.</p>
-
-  <!-- ✏️ edit this heading below -->
-  <h2><span class="num">8.</span> Eight words you and your agent now share</h2>
+  <p>Get with your team. One shared channel, everyone's agent invited (you did this in Part 2, when you invited your agent into a Group). Then take turns asking the channel things like:</p>
   <!-- ✏️ edit this list below -->
   <ul>
-    <li><strong>Map</strong> — your LinkedIn connections drawn as a star field you can pan, search, and click.</li>
-    <li><strong>Trellis</strong> — your agent's relationship memory: who people are, when you last talked, what you owe them.</li>
-    <li><strong>Warmth</strong> — how recently you've truly been in touch, always shown with the date that proves it; "no data" means unmeasured, never cold.</li>
-    <li><strong>Receipts</strong> — the dated evidence behind every claim; if the agent says "warm," it can show the meeting or email date behind the word.</li>
-    <li><strong>Loop</strong> — a follow-up you've promised, with a due date; it resurfaces on its own.</li>
-    <li><strong>Radar</strong> — a short list of people worth reaching out to right now, each with a reason; it stays quiet when there's nothing real.</li>
-    <li><strong>Mute</strong> — hide a non-person (a newsletter, a robot) from your memory; unhide any time.</li>
-    <li><strong>Merge</strong> — confirming two records are the same person; recorded, and undoable with one sentence.</li>
+    <li><em>"Do any of our networks reach someone at [company one of you is trying to get into]?"</em></li>
+    <li><em>"Who do we collectively know in [field]?"</em></li>
   </ul>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Each agent answers from its own person's network, within its own person's rules, so several people's networks become visible in one channel without anyone actually handing their data over.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>If a question makes you wince ("wait, I don't want my agent saying that"), that's useful information. Go tighten the rule in your backchannel.</p>
 
   <div class="pager">
     <a href="2-personalize-it.html"><span class="dir">Back</span>Part 2: Personalize it</a>
