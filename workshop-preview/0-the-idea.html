@@ -22,50 +22,90 @@
   <header>
     <p class="kicker">Start here</p>
   <!-- ✏️ edit the page title below -->
-    <h1>What's an agent, and why Hermes?</h1>
+    <h1>Agents, and why Hermes</h1>
   <!-- ✏️ edit the intro below -->
-    <p class="lede">A short read before you build anything: what an agent is, and why we start people on Hermes.</p>
+    <p class="lede">What an agent is, and why we start people on Hermes.</p>
   </header>
 
   <!-- ✏️ edit this heading below -->
   <h2>What's an agent?</h2>
   <!-- ✏️ edit this paragraph below -->
-  <p>You already use a model like Claude or ChatGPT: you ask, it answers, then it waits. An <strong>agent</strong> is a model that keeps working on its own. It remembers what you tell it, and it can run on a schedule or chase a goal without you steering each step. The big assistants are all adding this. Today you build one you own.</p>
+  <p>You already use AI models through products like Claude or ChatGPT: you ask a question, and the model answers.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>An <strong>agent</strong> goes a step further. It connects a model to instructions, tools, and usually some form of memory. Instead of only producing an answer, it can take actions and work through a series of steps—such as searching the web, editing files, sending a message, or running a scheduled task.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Agents are not automatically independent or trustworthy. You decide what the agent can access, what it is allowed to do, and when it needs your approval. Today, you'll build an agent that you control.</p>
   <!-- ✏️ edit this note below -->
   <div class="note">
     <strong>The words you'll hear:</strong>
     <ul style="margin:8px 0 0">
-      <li><strong>Model</strong> — the brain you talk to (Claude, GPT, Sol). The part you can swap.</li>
-      <li><strong>Agent</strong> — a model plus memory, scheduling, tools, and a personality.</li>
-      <li><strong>Framework</strong> — what you build the agent with. Hermes is one; OpenClaw is another.</li>
-      <li><strong>Virtual machine</strong> — a computer you rent in the cloud, separate from your laptop.</li>
+      <li><strong>Model</strong> — the brain you talk to (Claude, GPT, Gemini)</li>
+      <li><strong>Agent</strong> — a model plus memory, scheduling, tools, and a personality</li>
+      <li><strong>Framework</strong> — what you can build a agent with. Hermes is one; OpenClaw is another</li>
+      <li><strong>Virtual machine</strong> — a computer you rent in the cloud, separate from your laptop</li>
     </ul>
   </div>
 
   <!-- ✏️ edit this heading below -->
   <h2>What's Hermes?</h2>
   <!-- ✏️ edit this paragraph below -->
-  <p>Hermes is the framework you build the agent with. It wraps a model with the memory, scheduling, tools, and identity that make it an agent. The main alternative is OpenClaw, which came first. Hermes came later and added more guardrails: rules for who's allowed to talk to the agent, more caution when it edits its own code, and a smaller set of add-ons rather than thousands of community plugins. That's why we start people on it.</p>
+  <p>Hermes is the agent framework we'll use in this course. It connects an AI model to persistent memory, tools, reusable skills, messaging platforms, and scheduled tasks.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Another popular option is OpenClaw. Both are powerful, self-hosted systems, and both require thoughtful security settings. We're beginning with Hermes because its structure, built-in tools, and safety controls make it a good fit for the way this course demos agent building.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>That does not mean the agent is automatically safe. During setup, we'll decide who is allowed to talk to it, which tools it can use, which actions require approval, and what information it should be able to access.</p>
 
   <!-- ✏️ edit this heading below -->
   <h2>Why build your own?</h2>
   <!-- ✏️ edit this paragraph below -->
-  <p>With Claude or ChatGPT, the agent's memory and settings live inside someone else's product. With Hermes the agent is just files on a machine you control, so you can swap the model underneath whenever you want. Start on ChatGPT's Codex today, move to Claude or Sol tomorrow, and nothing you've set up is lost. Run out of one provider's tokens and you switch to another. The big models would rather keep you locked in; this way you aren't.</p>
+  <p>When you use a hosted assistant, its memory, settings, and behavior live inside that company's product. A self-hosted agent gives you more control over how those pieces are stored and configured.</p>
   <!-- ✏️ edit this paragraph below -->
-  <p>You can also put it in a room with other people, which Claude and Codex can't do yet. Your agent gets an identity others can talk to in shared channels, answering within rules you set. That's most of the second half of this course.</p>
+  <p>With Hermes, much of your agent's identity lives in files and data on a machine you control: its instructions, memories, skills, schedules, and configuration. Because the framework supports multiple AI providers, you can change the model it uses without rebuilding the entire agent.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>You might begin with OpenAI Codex, move to a Claude model later, or configure a backup model for times when your primary provider is unavailable or rate-limited. This is especially helpful when one provider e.g. GPT Sol is suddenly competitive (and better in some cases) than Claude.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>You can also give the agent its own identity in shared communication spaces. For example, it can participate in a Discord, Slack, Telegram, Matrix, or WhatsApp channel and respond according to rules you define.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>That is one thing we will set up today: not just an AI you chat with, but an agent that can remember its role, use approved tools, and work with you and other people.</p>
 
   <!-- ✏️ edit this heading below -->
-  <h2>When you don't need one</h2>
+  <h2>When you don't need an agent</h2>
   <!-- ✏️ edit this paragraph below -->
-  <p>If you just want to check your email, use Claude. Just your calendar, use Codex. You want something like Hermes when you're after an agent that's more independent, closer to a teammate that gets better over time and that you and people you trust can talk to. If that's not what you're building, you don't need any of this.</p>
+  <p><strong>A lot of the time, you do not need to build your own agent.</strong></p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>If you want to summarize this week's email, prepare for your next meeting, analyze a document, or complete another well-defined task, start with a hosted assistant like Claude or ChatGPT. These products already connect to many of the tools people use every day, and they are becoming more agentic all the time.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Use the simplest tool that can reliably do the job.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Hermes (or something like it) begins to make sense when you want an agent that:</p>
+  <!-- ✏️ edit this list below -->
+  <ul>
+    <li>keeps working across many conversations and tasks;</li>
+    <li>remembers information outside a single company's app;</li>
+    <li>runs recurring or scheduled workflows;</li>
+    <li>uses several tools as part of the same job;</li>
+    <li>can be reached by you and other trusted people;</li>
+    <li>has an identity, role, and set of rules that persist over time; or</li>
+    <li>can change model providers without being rebuilt from scratch.</li>
+  </ul>
+  <!-- ✏️ edit this paragraph below -->
+  <p>The point of this course is not that everyone needs a self-hosted agent.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>We are building one because it is a useful way to understand the fundamentals: how models use tools, how memory works, how permissions are set, how scheduled work runs, and where the risks come from. Once you understand those pieces, the agentic features appearing inside Claude, ChatGPT, Codex, and whatever comes next become much less mysterious.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>There is also a practical reason. A self-hosted framework gives you more control over your agent's instructions, memories, skills, and data. You can choose which model providers it uses instead of designing the entire system around one company's product.</p>
 
   <!-- ✏️ edit this heading below -->
   <h2>Why a blank computer</h2>
   <!-- ✏️ edit this paragraph below -->
-  <p>An agent that can write and run its own code, sitting on your laptop, can reach everything else on your laptop: your files, your tax returns, whatever is there. You've probably heard the story of someone's whole inbox getting wiped. That's the risk when the agent lives where your data does. So it doesn't. In Part 1 you put your agent on a rented, blank machine with none of your data on it, and you hand over only what you choose.</p>
+  <p>An agent that can write and run its own code, sitting on your laptop, can reach everything else on your laptop: your files, your tax returns, whatever is there.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>An agent can misunderstand what you asked, make an unexpected change, or follow a malicious instruction hidden in something it reads. You might have heard the story of someone's whole inbox getting wiped. That's why we're starting cautiously.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>In Part 1 you put your agent on a rented, blank machine with none of your data on it. You hand over only what you choose.</p>
 
   <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">Before you build</span> the shape of it: an agent is a model that's awake and acts on its own, Hermes lets you own it and swap the model underneath, and the blank machine keeps it away from your real files until you decide otherwise.</span></label></div>
+  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">Before you build</span> a recap: an agent connects a model to tools that let it take actions. Hermes lets you control its instructions, memory, and model provider. Running it on a separate machine creates a boundary between the agent and your personal computer until you intentionally connect the two.</span></label></div>
 
   <div class="pager">
     <a href="index.html"><span class="dir">Back</span>Workshop guide</a>
