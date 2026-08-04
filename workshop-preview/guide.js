@@ -7,7 +7,7 @@
     { href: '0-the-idea.html', title: 'Agents, and why Hermes', mins: 6, checks: 1, node: 'i' },
     { href: '1-stand-it-up.html', title: 'Stand it up', mins: 30, checks: 5, node: '1' },
     { href: '2-personalize-it.html', title: 'Personalize it', mins: 20, checks: 5, node: '2' },
-    { href: '3-relationship-agent.html', title: 'Your personal CRM agent', mins: 75, checks: 3, node: '3' },
+    { href: '3-relationship-agent.html', title: 'The personal EA + CRM', mins: 75, checks: 3, node: '3' },
   ];
 
   var dir = location.pathname.replace(/[^/]*$/, '');
@@ -45,7 +45,7 @@
     '<div class="rail-progress"><div class="bar" role="progressbar" aria-label="Course progress"><i></i></div>' +
     '<div class="bar-label"></div></div>' +
     '<ol class="rail-nav"></ol>' +
-    '<div class="rail-foot">Stuck? Raise your hand.<br><a href="https://github.com/maczumby/hermes-setup/issues">Or file an issue</a></div>';
+    '<div class="rail-foot">Stuck? Raise your hand.<br>Or send us a message in Filament.</div>';
 
   var nav = rail.querySelector('.rail-nav');
   COURSE.forEach(function (mod, idx) {
