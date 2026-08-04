@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build your agent — a workshop</title>
+<style>
+  :root{
+    --ground:#16130f;
+    --ink:#fcf6dc;
+    --muted:#928c7c;
+    --dim:#6f6858;
+    --line:#b8b2a0;
+    --accent:#e74f1d;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"Geist Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{
+    background:var(--ground);color:var(--ink);
+    font-family:var(--sans);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    min-height:100%;display:flex;align-items:center;justify-content:center;
+    padding:6vh 6vw;
+  }
+  .cover{width:100%;max-width:760px}
+  .kicker{
+    font:700 12px/1 var(--mono);letter-spacing:.34em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 26px;
+  }
+  h1{
+    font-weight:800;font-size:clamp(28px,5.2vw,46px);line-height:1.08;letter-spacing:-.02em;
+    margin:0;color:var(--ink);
+  }
+  .sub{
+    font-weight:800;font-size:clamp(28px,5.2vw,46px);line-height:1.08;letter-spacing:-.02em;
+    margin:2px 0 0;color:var(--muted);
+  }
+  .curve{margin-top:clamp(28px,6vh,54px)}
+  .curve svg{display:block;width:100%;height:auto}
+  .axis{font:400 12px/1 var(--mono);letter-spacing:.24em;fill:var(--dim)}
+  .track{fill:none;stroke:var(--line);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:3 7;opacity:.85}
+  .dot{fill:#ddd7c5}
+  .begin{
+    display:inline-flex;align-items:center;gap:10px;margin-top:clamp(28px,6vh,52px);
+    color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;
+    border:1px solid #3a3529;border-radius:999px;padding:11px 22px;
+    transition:border-color .2s,transform .2s,background .2s;
+  }
+  .begin:hover{border-color:var(--accent);transform:translateY(-1px);background:rgba(231,79,29,.08)}
+  .begin .arrow{color:var(--accent);transition:transform .2s}
+  .begin:hover .arrow{transform:translateX(3px)}
+
+  /* entrance */
+  .rise{opacity:0;transform:translateY(14px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+  .kicker.rise{animation-delay:.05s}
+  h1.rise{animation-delay:.18s}
+  .sub.rise{animation-delay:.30s}
+  .curve.rise{animation-delay:.46s}
+  .begin.rise{animation-delay:1.05s}
+  .dot{opacity:0;animation:pop .5s ease forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @keyframes pop{to{opacity:1}}
+  @media (prefers-reduced-motion:reduce){
+    .rise,.dot{opacity:1;transform:none;animation:none}
+  }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <p class="kicker rise">Remember</p>
+    <h1 class="rise">Everyone is on a learning curve with AI.</h1>
+    <p class="sub rise">Nobody knows where they are on it.</p>
+
+    <div class="curve rise">
+      <svg viewBox="0 0 700 430" role="img" aria-label="A learning curve: what you can do rises over time, accelerating.">
+        <!-- vertical axis label -->
+        <text class="axis" transform="rotate(-90 66 250)" x="66" y="250" text-anchor="middle">what you can do &#8593;</text>
+        <!-- horizontal axis label -->
+        <text class="axis" x="690" y="418" text-anchor="end">time &#8594;</text>
+        <!-- the curve -->
+        <polyline class="track" points="120,392 168,388 214,379 260,366 306,349 352,327 398,301 444,271 490,238 536,201 582,160"/>
+        <g>
+          <circle class="dot" cx="120" cy="392" r="4" style="animation-delay:.6s"/>
+          <circle class="dot" cx="168" cy="388" r="4" style="animation-delay:.66s"/>
+          <circle class="dot" cx="214" cy="379" r="4" style="animation-delay:.72s"/>
+          <circle class="dot" cx="260" cy="366" r="4" style="animation-delay:.78s"/>
+          <circle class="dot" cx="306" cy="349" r="4" style="animation-delay:.84s"/>
+          <circle class="dot" cx="352" cy="327" r="4" style="animation-delay:.90s"/>
+          <circle class="dot" cx="398" cy="301" r="4" style="animation-delay:.96s"/>
+          <circle class="dot" cx="444" cy="271" r="4" style="animation-delay:1.02s"/>
+          <circle class="dot" cx="490" cy="238" r="4" style="animation-delay:1.08s"/>
+          <circle class="dot" cx="536" cy="201" r="4" style="animation-delay:1.14s"/>
+          <circle class="dot" cx="582" cy="160" r="4" style="animation-delay:1.20s"/>
+        </g>
+      </svg>
+    </div>
+
+    <a class="begin rise" href="index.html">Begin the workshop <span class="arrow">&#8594;</span></a>
+  </div>
+</body>
+</html>
