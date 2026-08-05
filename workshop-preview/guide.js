@@ -141,21 +141,6 @@
       card.insertBefore(node, card.firstChild);
       if (checkedCount(mod) === mod.checks) card.classList.add('done');
     });
-    var next = null;
-    for (var i = 1; i < COURSE.length; i++) {
-      if (checkedCount(COURSE[i]) < COURSE[i].checks) { next = COURSE[i]; break; }
-    }
-    var p = progress();
-    if (next) {
-      var box = document.createElement('div');
-      box.className = 'continue';
-      box.innerHTML =
-        '<div><strong>' + (p.done ? 'Pick up where you left off' : 'Ready when you are') + '</strong>' +
-        '<div class="sub">' + (p.done ? p.done + ' of ' + p.total + ' checkpoints done.' : 'Work through it at your own pace.') + '</div></div>' +
-        '<a class="cta" href="' + next.href + '">' + (p.done ? 'Continue' : 'Start') + ': ' + next.title + ' →</a>';
-      var header = wrap.querySelector('header');
-      header.insertAdjacentElement('afterend', box);
-    }
   }
 
   // Copy buttons
