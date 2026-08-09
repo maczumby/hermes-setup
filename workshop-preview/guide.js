@@ -16,6 +16,90 @@
   function store(key) {
     try { return localStorage.getItem(key); } catch (e) { return null; }
   }
+
+  // ── Gate: name/email before the guide opens, plus view logging ───
+  // Fails open on purpose: if the Worker is unreachable, the guide
+  // still loads and the visit just isn't recorded.
+  var GATE = {
+    enabled: false, // flip to true to turn the gate on for everyone
+    endpoint: 'https://workshop-gate.CHANGEME.workers.dev', // set after first deploy
+    days: 7
+  };
+
+  function gateActive() {
+    try {
+      var q = location.search;
+      if (/[?&]gate=1\b/.test(q)) sessionStorage.setItem('gate:test', '1');
+      if (/[?&]gate=0\b/.test(q)) sessionStorage.removeItem('gate:test');
+      if (sessionStorage.getItem('gate:test') === '1') return true;
+    } catch (e) {}
+    return GATE.enabled;
+  }
+
+  function identity() {
+    try {
+      var id = JSON.parse(localStorage.getItem('gate:id') || 'null');
+      if (!id || !id.email) return null;
+      if (Date.now() - (id.ts || 0) > GATE.days * 864e5) return null;
+      return id;
+    } catch (e) { return null; }
+  }
+
+  function send(path, data) {
+    try {
+      var body = JSON.stringify(data);
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(GATE.endpoint + path, new Blob([body], { type: 'text/plain' }));
+      } else if (window.fetch) {
+        fetch(GATE.endpoint + path, { method: 'POST', body: body, keepalive: true }).catch(function () {});
+      }
+    } catch (e) {}
+  }
+
+  function showGate() {
+    var overlay = document.createElement('div');
+    overlay.className = 'gate';
+    overlay.innerHTML =
+      '<div class="gate-card">' +
+      '<div class="gate-brand"><span class="co">Filament workshop</span>Build your agent</div>' +
+      '<h2>Before you open the guide</h2>' +
+      '<p>This guide is free. I just like to know who’s using it. Your name and email and you’re in.</p>' +
+      '<form novalidate>' +
+      '<label>Name<input type="text" name="name" autocomplete="name" maxlength="120"></label>' +
+      '<label>Email<input type="email" name="email" autocomplete="email" maxlength="120" required></label>' +
+      '<p class="gate-err" hidden>That email doesn’t look right.</p>' +
+      '<label class="gate-check"><input type="checkbox" name="emailOk"> Okay to email me about future workshops</label>' +
+      '<button type="submit">Open the guide</button>' +
+      '</form>' +
+      '<p class="gate-fine">I use this to see who’s working through the guide and to occasionally share workshop updates. No spam, and your info never gets shared.</p>' +
+      '</div>';
+    document.body.appendChild(overlay);
+    document.body.classList.add('gated');
+    var form = overlay.querySelector('form');
+    var err = overlay.querySelector('.gate-err');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = form.name.value.trim();
+      var email = form.email.value.trim().toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        err.hidden = false;
+        form.email.focus();
+        return;
+      }
+      try { localStorage.setItem('gate:id', JSON.stringify({ name: name, email: email, ts: Date.now() })); } catch (e2) {}
+      send('/register', { name: name, email: email, emailOk: form.emailOk.checked });
+      send('/view', { email: email, path: location.pathname, t: 'view' });
+      document.body.classList.remove('gated');
+      overlay.remove();
+    });
+    overlay.querySelector('input[name="name"]').focus();
+  }
+
+  if (gateActive()) {
+    var visitor = identity();
+    if (visitor) send('/view', { email: visitor.email, path: location.pathname, t: 'view' });
+    else showGate();
+  }
   function checkedCount(mod) {
     var page = dir + mod.href;
     var n = 0;
@@ -172,6 +256,10 @@
     box.addEventListener('change', function () {
       try { localStorage.setItem(key, box.checked ? '1' : '0'); } catch (e) {}
       paint();
+      if (gateActive() && current) {
+        var who = identity();
+        if (who) send('/view', { email: who.email, path: location.pathname, t: 'check', done: checkedCount(current), total: current.checks });
+      }
     });
   });
 

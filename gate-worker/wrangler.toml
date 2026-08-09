@@ -1,0 +1,17 @@
+name = "workshop-gate"
+main = "src/index.js"
+compatibility_date = "2026-08-01"
+
+# KV namespace for people + view events. The id below is a placeholder that
+# works for local dev (`npx wrangler dev`); replace with the real namespace id
+# after `npx wrangler kv namespace create LOG` on the production account.
+kv_namespaces = [
+  { binding = "LOG", id = "00000000000000000000000000000000" }
+]
+
+[vars]
+ALLOWED_ORIGINS = "https://maczumby.github.io,http://localhost:8000,http://127.0.0.1:8000"
+
+# STATS_SLUG is NOT set here on purpose — the stats URL must stay out of this
+# public repo. Locally it comes from .dev.vars (gitignored); in production set
+# it once with: npx wrangler secret put STATS_SLUG

@@ -1,2 +1,5 @@
 workshop/SHOTLIST.md
 guides/
+gate-worker/.dev.vars
+gate-worker/node_modules/
+gate-worker/.wrangler/
