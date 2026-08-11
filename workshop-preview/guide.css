@@ -296,3 +296,9 @@ body.gated{overflow:hidden}
 .gate-err{color:#b3261e;font-size:13px;margin:-6px 0 12px}
 .gate-fine{margin:16px 0 0;font-size:12.5px;color:var(--dim);line-height:1.5}
 .gate-fine:last-child{margin-bottom:0}
+
+/* Locked (coming-up) modules on the course home: visible but not clickable. */
+.path.locked{cursor:default}
+.path.locked:hover{background:none;border-color:transparent}
+.path.locked .node{border-style:dashed}
+.path.locked h3,.path.locked p{color:var(--muted)}
