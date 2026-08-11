@@ -22,7 +22,7 @@
   // still loads and the visit just isn't recorded.
   var GATE = {
     enabled: false, // flip to true to turn the gate on for everyone
-    endpoint: 'https://workshop-gate.CHANGEME.workers.dev', // set after first deploy
+    endpoint: 'https://workshop-gate.mari-network-observatory.workers.dev',
     days: 7
   };
 

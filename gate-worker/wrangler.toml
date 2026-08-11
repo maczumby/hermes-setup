@@ -1,12 +1,11 @@
 name = "workshop-gate"
 main = "src/index.js"
 compatibility_date = "2026-08-01"
+preview_urls = false
 
-# KV namespace for people + view events. The id below is a placeholder that
-# works for local dev (`npx wrangler dev`); replace with the real namespace id
-# after `npx wrangler kv namespace create LOG` on the production account.
+# KV namespace for people + view events (local dev uses its own local store).
 kv_namespaces = [
-  { binding = "LOG", id = "00000000000000000000000000000000" }
+  { binding = "LOG", id = "0e32c4a8a5f24dfb827210b84668e954" }
 ]
 
 [vars]
