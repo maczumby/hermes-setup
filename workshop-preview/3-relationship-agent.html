@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Part 3: The personal EA + CRM — workshop guide</title>
-<link rel="stylesheet" href="guide.css?v=20260811a">
+<title>This part moved — workshop guide</title>
+<link rel="stylesheet" href="guide.css?v=20260811b">
 </head>
 <body>
 <div class="wrap">
@@ -13,180 +13,26 @@
        A line marked with the pencil sits just above text you can
        rewrite. Change the words, not the tags: edit what's between
        a > and the next <, and never change anything inside < >.
-       A line marked WARNING is a command for the agent. You can
-       reword it, but keep the step numbers and the layout.
        ============================================================ -->
 
-  <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Part 3 of 3</nav>
+  <nav class="crumbs"><a href="index.html">← Workshop guide</a></nav>
 
   <header>
-    <p class="kicker">Part 3</p>
+    <p class="kicker">Build your agent</p>
   <!-- ✏️ edit the page title below -->
-    <h1>The personal EA + CRM</h1>
+    <h1>This part has its own session now</h1>
   <!-- ✏️ edit the intro below -->
-    <p class="lede">Why did we do the Applied AI agent first? It gave you a feel for how quickly you can set up an agent, prompt it, and have it start doing useful work for you and with other people.</p>
+    <p class="lede">The personal EA + CRM is now Part 2, taught as its own workshop with its own link.</p>
   </header>
 
   <!-- ✏️ edit this paragraph below -->
-  <p>It was also a safer place to start. That agent works with mostly public information. If someone got access to it, you probably would not care very much, because it doesn't hold any sensitive, private data.</p>
-  <!-- ✏️ edit this paragraph below -->
-  <p>A personal agent is different. An EA or personal CRM you'll likely want to give it your calendar, your network, and maybe eventually your email. The moment it can see your data, you should think about where that data could go.</p>
-
-  <!-- ✏️ edit this heading below -->
-  <h2>Blast radius</h2>
-  <!-- ✏️ edit this paragraph below -->
-  <p>Before you connect anything, ask yourself if something went wrong, how wrong could it go?</p>
-  <!-- ✏️ edit this paragraph below -->
-  <p>We're talking to LLMs here, they make mistakes. When they can also write code those mistakes can be much worse. If your tax returns are on a computer your agent has access to, it could accidentally share them or delete them. If your social security number or passport photo are living in your personal email, it could get confused and share them.</p>
-  <figure class="shot">
-    <svg viewBox="0 0 380 360" role="img" aria-label="Blast radius: data travels outward from you, to your agent's computer, to the model provider, to the room and out.">
-      <g fill="none" stroke="#e5e3da" stroke-width="1.4" stroke-dasharray="3 6">
-        <circle cx="190" cy="180" r="150"/>
-        <circle cx="190" cy="180" r="108"/>
-        <circle cx="190" cy="180" r="66"/>
-      </g>
-      <circle cx="190" cy="180" r="7" fill="#d94717"/>
-      <g font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="12.5" fill="#5c6675" text-anchor="middle">
-        <text x="190" y="205">you</text>
-        <text x="190" y="118">your agent's computer</text>
-        <text x="190" y="76">the model provider</text>
-        <text x="190" y="34">the room, and out</text>
-      </g>
-    </svg>
-  <!-- ✏️ edit this caption below -->
-    <figcaption>You → your agent's computer → the model provider → the room, and out. Think of each step as another place your data could end up.</figcaption>
-  </figure>
-  <!-- ✏️ edit this note below -->
-  <div class="note">That's also why we've built some custom skills for myself e.g. an agent that can only see email <em>metadata</em>, such as who you talked to and when, without reading the messages themselves. Send us your gmail if you'd like to test it out.</div>
-
-  <!-- ✏️ edit this heading below -->
-  <h2>Now let's get to it</h2>
-  <!-- ✏️ edit this paragraph below -->
-  <p>As part of my own adventures in building agents, one of my most valuable is my EA / personal CRM, so I thought I'd share some of my own code. This is meant to do two things:</p>
-  <!-- ✏️ edit this list below -->
-  <ul>
-    <li>show you the power of an agent that writes code</li>
-    <li>get you started on your own CRM</li>
-  </ul>
-  <!-- ✏️ edit this paragraph below -->
-  <p>And that's the crazy part, is in a trusted group like this you can be sharing improvements and customizations amongst ourselves.</p>
-  <!-- ✏️ edit this paragraph below -->
-  <p>But remember, be cautious taking code from strangers!</p>
-
-  <!-- ✏️ edit this heading below -->
-  <h2><span class="num">1.</span> Get your LinkedIn export</h2>
-  <!-- ✏️ edit this paragraph below -->
-  <p>You started this at the beginning (if not, do it now; LinkedIn takes a while to prepare it): open <a href="https://www.linkedin.com/mypreferences/d/download-my-data" target="_blank" rel="noopener">Get a copy of your data</a>, pick the <strong>top option, the larger data archive</strong> (not the "want something in particular" choice below it), and download the zip when the email arrives. The big archive is the one that includes your connections.</p>
-  <!-- ✏️ edit this paragraph below -->
-  <p>If you don't have one, that's okay, you can learn from other people's and follow these steps later.</p>
-  <figure class="shot">
-    <img src="img/li-export.png" alt="Where the LinkedIn export lives in settings">
-    <div class="ph">Screenshot coming: li-export.png</div>
-  <!-- ✏️ edit this caption below -->
-    <figcaption>Where the export lives in LinkedIn's settings.</figcaption>
-  </figure>
-  <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now have</span> a zip file in your email from LinkedIn (if you requested it in advance). You will need to unzip and find the <code>connections.csv</code>.</span></label></div>
-
-  <!-- ✏️ edit this heading below -->
-  <h2><span class="num">2.</span> Build your map</h2>
-  <!-- ✏️ edit this paragraph below -->
-  <p>Then send these instructions along with your <code>connections.csv</code> file to your agent.</p>
-  <p class="prompt-label">Paste to your agent — with the file attached</p>
-  <!-- ⚠️ agent command: reword freely, keep the step numbers and layout -->
-  <div class="code"><button class="copy">Copy</button><pre><code>git clone https://github.com/maczumby/network-observatory.git, then set up the
-network-observatory tool and build my map from this LinkedIn export. Read its
-CLAUDE.md, import my connections, build the map, and send me a link to my
-network observatory.</code></pre></div>
-  <!-- ✏️ edit this paragraph below -->
-  <p>Open it and that's your network as a star map: search anyone, color by company or seniority, click a person for details.</p>
-  <!-- ✏️ edit this paragraph below -->
-  <p>Everything is on your agent's machine with your data; the code I shared is just a fun way I created to help you visualize it. You can customize it by asking your agent to make changes.</p>
-  <figure class="shot">
-    <img src="img/obs-starmap.png" alt="A network as a star map">
-    <div class="ph">Screenshot coming: obs-starmap.png</div>
-  <!-- ✏️ edit this caption below -->
-    <figcaption>A network as a star map.</figcaption>
-  </figure>
-  <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> your map, and the agent's summary of what it imported (how many people, what span of years, top companies).</span></label></div>
-
-  <!-- ✏️ edit this heading below -->
-  <h2><span class="num">3.</span> Give it the role, with sharing rules</h2>
-  <!-- ✏️ edit this paragraph below -->
-  <p>The next paste is what makes this a <em>relationship agent</em> rather than a chart. It sets what it does for you privately, and (read this part carefully before you send it) what it may share when other people ask:</p>
-  <p class="prompt-label">Paste to your agent — in the backchannel (<a href="pastes/crm-agent.md">raw file</a>)</p>
-  <!-- ⚠️ agent command: reword freely, keep the step numbers and layout -->
-  <div class="code tall"><button class="copy">Copy</button><pre><code>I want you to act as my personal relationship agent, built on the network
-map and relationship memory you set up from my LinkedIn export.
-
-Read all of this before you change anything.
-
-YOUR JOB
-Help me be a better connector. You know who I'm connected to, where they
-work, and what I've logged about them. Use it to answer my questions, jog my
-follow-ups, and help other people tap my network, within rules I set.
-
-WHAT YOU DO FOR ME (in the backchannel, full access)
-- "Who do I know at X / in Y field?": answer from the map, with names.
-- "When did I last talk to Z, what do I owe them?": answer from the
-  relationship memory, citing where each fact came from.
-- After I meet someone, I'll tell you; log it.
-- Draft outreach only from facts you have. Never invent shared history.
-  Never send anything. Drafts come to me.
-
-WHAT YOU DO FOR OTHERS (in shared channels, when asked)
-When someone in a shared channel asks whether I know someone ("does she
-know anyone in climate tech?"), you may:
-- Suggest up to three names with public profile links, if the connection is
-  obviously public (same company, public role).
-You may NOT share: contact details, my notes or history with anyone, how
-well I actually know someone, or anything from my email or calendar. When a
-request needs any of that, tell them you're checking with me, and bring it
-to me via message_principal.
-
-CHANGES TO MAKE NOW
-
-1. Update your standing instructions with the shared-channel rules above,
-   plus this line: my word in any channel overrides these rules in the
-   moment.
-2. Append a change-note:
-   &gt; change-note &lt;today's date&gt;: became my relationship agent; may suggest
-   public connections in shared channels, asked by &lt;my name&gt; in the
-   backchannel.
-
-CONFIRM BEFORE YOU'RE LIVE
-Read your saved instructions back to me, then answer one trial question from
-me in the backchannel and tell me how you'd answer the same question if a
-stranger asked it in a shared channel, so I can hear the difference.</code></pre></div>
-  <!-- ✏️ edit this checkpoint below -->
-  <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now hear</span> the difference in the agent's own words: the full answer it gives you vs. the bounded one it gives a stranger. If those sound the same, the rules didn't land. Raise your hand.</span></label></div>
-
-  <!-- ✏️ edit this heading below -->
-  <h2><span class="num">4.</span> Social superpowers</h2>
-  <!-- ✏️ edit this paragraph below -->
-  <p>This gets much more useful when you bring in a small group of people you trust, like your team.</p>
-  <!-- ✏️ edit this paragraph below -->
-  <p>Create one shared channel and invite everyone's agent (like we did before). Then ask questions like:</p>
-  <!-- ✏️ edit this list below -->
-  <ul>
-    <li><em>"Do any of us know someone at [company]?"</em></li>
-    <li><em>"Who has a strong connection in [field]?"</em></li>
-    <li><em>"Does anyone have a path to this person?"</em></li>
-  </ul>
-  <!-- ✏️ edit this paragraph below -->
-  <p>Each agent checks its own person's network and shares only what that person has allowed it to share.</p>
-  <!-- ✏️ edit this paragraph below -->
-  <p>That means your team can search across all of your networks at once without anyone handing over their full contact list. You get the benefit of a much bigger network while each person still keeps control of their own data.</p>
-  <!-- ✏️ edit this paragraph below -->
-  <p>And if your agent says something that makes you think, "Wait, I don't want it sharing that," that's useful. Go back to your private channel, tighten the rule.</p>
+  <p>Came to a workshop already, or want in on the next one? Message Mari in Filament and she'll send you the link.</p>
 
   <div class="pager">
-    <a href="2-personalize-it.html"><span class="dir">Back</span>Part 2: Personalize it</a>
-    <a href="index.html"><span class="dir">Done</span>Back to the guide</a>
+    <a href="index.html"><span class="dir">Back</span>Workshop guide</a>
   </div>
 
 </div>
-<script src="guide.js?v=20260811a"></script>
+<script src="guide.js?v=20260811b"></script>
 </body>
 </html>

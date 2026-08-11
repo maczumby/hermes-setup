@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Part 1: Stand it up — workshop guide</title>
-<link rel="stylesheet" href="guide.css?v=20260811a">
+<link rel="stylesheet" href="guide.css?v=20260811b">
 </head>
 <body>
 <div class="wrap">
@@ -17,7 +17,7 @@
        reword it, but keep the step numbers and the layout.
        ============================================================ -->
 
-  <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Part 1 of 3</nav>
+  <nav class="crumbs"><a href="index.html">← Workshop guide</a> · Part 1</nav>
 
   <header>
     <p class="kicker">Part 1</p>
@@ -48,6 +48,12 @@
   <p>Confirm and launch. It takes a minute to come up.</p>
   <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> your agent listed on your Agent37 dashboard with a green or "running" status.</span></label></div>
+  <figure class="shot">
+    <img src="img/a37-running.png" alt="Agent37 dashboard with the new agent showing a running status">
+    <div class="ph">Screenshot coming: a37-running.png</div>
+  <!-- ✏️ edit this caption below -->
+    <figcaption>The dashboard with your new agent showing a running status.</figcaption>
+  </figure>
   <!-- ✏️ edit this paragraph below -->
   <p>Give it a name in case you're inspired to create more agents</p>
   <figure class="shot">
@@ -55,7 +61,7 @@
     <div class="ph">Screenshot coming: a37-agent-name.png</div>
   </figure>
   <!-- ✏️ edit this paragraph below -->
-  <p>And now you actually have a working Hermes agent live on your machine right now live on this virtual computer right now! But there are a few more things we're going to do to configure it before we start chatting with it.</p>
+  <p>And now you actually have a working Hermes agent live on this virtual computer right now! But there are a few more things we're going to do to configure it before we start chatting with it.</p>
 
   <!-- ✏️ edit this heading below -->
   <h2><span class="num">2.</span> Open its terminal</h2>
@@ -63,12 +69,22 @@
   <p>Your agent runs on its own computer, and that computer has a terminal you can open right in the browser from the agent's page on Agent37.</p>
   <!-- ✏️ edit this paragraph below -->
   <p>If you've never used a terminal: it's just a way to give the computer instructions directly. Don't worry, we'll be in and out in about 3–5 minutes. You'll run three commands, and then we'll move on.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>First, click on your agent's name in the dashboard. That opens the agent's own page, and the terminal button lives there, in the row of icons at the top right.</p>
+  <figure class="shot">
+    <img src="img/a37-agent-page.png" alt="The agent's page on Agent37 with the terminal button at the top right">
+    <div class="ph">Screenshot coming: a37-agent-page.png</div>
+  <!-- ✏️ edit this caption below -->
+    <figcaption>The agent's page. The terminal button is in the icon row, top right.</figcaption>
+  </figure>
   <figure class="shot">
     <img src="img/a37-terminal-icon.png" alt="The terminal icon highlighted in the Agent37 toolbar">
     <div class="ph">Screenshot coming: a37-terminal.png</div>
   <!-- ✏️ edit this caption below -->
     <figcaption>Click this button to open your terminal</figcaption>
   </figure>
+  <!-- ✏️ edit this paragraph below -->
+  <p>The terminal opens at a web address that says openclaw. That's normal, it's still your Hermes agent.</p>
   <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a terminal with a cursor at a prompt.</span></label></div>
   <figure class="shot">
@@ -93,17 +109,51 @@
   <!-- ✏️ edit this paragraph below -->
   <p>and hit enter</p>
   <!-- ✏️ edit this paragraph below -->
-  <p>Once you hit enter, pick the provider you have a subscription with and follow the login flow it gives you (it will hand you a link to open in your browser). The sign-in code shows up <strong>in the terminal</strong>, not the browser, so keep an eye there.</p>
+  <p>Once you hit enter you'll see the model picker, and the list is long. Scroll with your arrow keys; <strong>OpenAI Codex CLI</strong> sits near the bottom. Choose it, then pick <strong>OpenAI Codex</strong>, the option that runs on your subscription instead of charging per token.</p>
   <figure class="shot">
     <img src="img/a37-model-login.png" alt="Hermes model selection and subscription login">
     <div class="ph">Screenshot coming: a37-model-login.png</div>
   <!-- ✏️ edit this caption below -->
     <figcaption>The model picker</figcaption>
   </figure>
-  <!-- ✏️ edit this note below -->
-  <div class="note"><strong>Sometimes ChatGPT asks for a settings change to login this way:</strong> open ChatGPT in another tab → <strong>Settings</strong> → <strong>Security and login</strong>, scroll to the bottom, and turn on <strong>device code authorization for Codex</strong>. Then re-click the link from the terminal.</div>
   <!-- ✏️ edit this paragraph below -->
-  <p>When it asks which model to run, ChatGPT gives you a few. GPT-5.5 is a fine default for today. GPT-5.6 Sol is their most capable (their answer to Anthropic's Fable); it burns through subscription tokens faster but costs you nothing extra, so use it if you want. You can switch any time.</p>
+  <p>Follow the login flow it gives you (it will hand you a link to open in your browser). The sign-in code shows up <strong>in the terminal</strong>, not the browser, so keep an eye there.</p>
+  <figure class="shot">
+    <img src="img/a37-codex-code.png" alt="The terminal showing the login link and the sign-in code together">
+    <div class="ph">Screenshot coming: a37-codex-code.png</div>
+  <!-- ✏️ edit this caption below -->
+    <figcaption>The login link and the sign-in code, both in the terminal.</figcaption>
+  </figure>
+  <!-- ✏️ edit this note below -->
+  <div class="note"><strong>Sometimes ChatGPT asks for a settings change before this login works</strong> (most of the room hit this on Aug 5): open ChatGPT in another tab → click your profile icon in the <strong>bottom left</strong> → <strong>Settings</strong> → <strong>Security and login</strong> → scroll to the very bottom → turn on <strong>device code authorization for Codex</strong> so the toggle shows blue.<br><br>Then go back to the terminal and <strong>click the login link again</strong>. The login restarts fresh and this time it goes through.</div>
+  <figure class="shot">
+    <img src="img/gpt-device-prompt.png" alt="The terminal message asking for the device-code setting">
+    <div class="ph">Screenshot coming: gpt-device-prompt.png</div>
+  <!-- ✏️ edit this caption below -->
+    <figcaption>What it looks like when ChatGPT wants the setting changed.</figcaption>
+  </figure>
+  <figure class="shot">
+    <img src="img/gpt-device-toggle.png" alt="ChatGPT Security and login settings page">
+    <div class="ph">Screenshot coming: gpt-device-toggle.png</div>
+  </figure>
+  <figure class="shot">
+    <img src="img/gpt-device-toggle-2.png" alt="The device code authorization toggle at the bottom of Security and login">
+    <div class="ph">Screenshot coming: gpt-device-toggle-2.png</div>
+  <!-- ✏️ edit this caption below -->
+    <figcaption>The toggle lives at the very bottom of Security and login.</figcaption>
+  </figure>
+  <!-- ✏️ edit this paragraph below -->
+  <p>After you log in, the terminal asks you to <strong>select a default model</strong>. It's an easy screen to miss, so don't close the terminal yet.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>GPT-5.5 is a fine default for today. GPT-5.6 Tera gives you more capability for fewer tokens. GPT-5.6 Sol is their most capable (their answer to Anthropic's Fable), but it burns through your subscription fastest, so save it for later. You can switch any time.</p>
+  <figure class="shot">
+    <img src="img/a37-model-select.png" alt="The select-a-default-model screen in the terminal">
+    <div class="ph">Screenshot coming: a37-model-select.png</div>
+  <!-- ✏️ edit this caption below -->
+    <figcaption>The select-a-default-model screen. Pick 5.5 or 5.6 Tera.</figcaption>
+  </figure>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Login looping or failing? Jump to <a href="#when-it-breaks"><strong>When it breaks</strong></a> at the end of this part.</p>
   <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> the login confirmed in the terminal.</span></label></div>
 
@@ -115,13 +165,27 @@
   <div class="code"><button class="copy">Copy</button><pre><code>hermes config set compression.codex_gpt55_autoraise false</code></pre></div>
   <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a confirmation that the setting changed. This one is just housekeeping.</span></label></div>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Missed this step earlier? It runs any time in this same terminal.</p>
 
   <!-- ✏️ edit this heading below -->
-  <h2>Connect it to Filament</h2>
+  <h2><span class="num">5.</span> Connect it to Filament</h2>
   <!-- ✏️ edit this note below -->
   <div class="note">If you don't have the desktop app, we recommend it so you don't miss a response from your agent 👉 filament.dm/download<br><br><strong>If you already have it, make sure it's on the latest version.</strong> In the Filament menu (top left, by the Apple menu) choose <strong>Check for updates</strong> and restart if it offers a new version.</div>
   <!-- ✏️ edit this paragraph below -->
-  <p>In the Filament app, open the <strong>Agents</strong> tab (the bow-tie icon in the left rail) and choose to connect a Hermes agent. Filament gives you a one-line connect command with a token in it.</p>
+  <p>In the Filament app, open the <strong>Agents</strong> tab (the bow-tie icon in the left rail) and choose to connect a Hermes agent.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Filament will ask what kind of agent you're connecting. Pick <strong>Bespoke agent</strong>. A bespoke agent only sees the groups and channels you add it to. A personal agent sees all your messages on Filament, which is a bigger decision for another day.</p>
+  <figure class="shot">
+    <img src="img/fil-bespoke-choice.png" alt="The bespoke vs personal agent choice screen in Filament">
+    <div class="ph">Screenshot coming: fil-bespoke-choice.png</div>
+  <!-- ✏️ edit this caption below -->
+    <figcaption>Pick Bespoke.</figcaption>
+  </figure>
+  <!-- ✏️ edit this paragraph below -->
+  <p>If your screens don't match these, hard refresh (Cmd+R on a Mac, Ctrl+R on a PC). You may be on a cached older version of the app.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>At the end of those screens, Filament gives you a one-line connect command with a token in it.</p>
   <figure class="shot">
     <img src="img/fil-agents-tab.png" alt="Filament Agents tab showing the connect command">
     <div class="ph">Screenshot coming: fil-agents-tab.png</div>
@@ -136,6 +200,8 @@
   </figure>
   <!-- ✏️ edit this paragraph below -->
   <p>Copy that command, go back to the agent's terminal, and paste it in. That token is a key to your agent. Treat it like a password and don't post it anywhere.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>On a PC, paste with <strong>Shift+Insert</strong>. Then check that the pasted line starts at <code>curl</code>. If stray characters show up in front of it, delete them before you hit enter.</p>
   <figure class="shot">
     <img src="img/a37-connect-ok.png" alt="The Filament connect command ready to paste">
     <div class="ph">Screenshot coming: a37-connect-ok.png</div>
@@ -144,13 +210,31 @@
   <p>Two things happen when it connects: your agent shows up in Filament as a member you can talk to, and Filament creates a private channel for just the two of you. That private channel is called your <strong>backchannel</strong>. You'll use it constantly, and Part 2 explains how it works.</p>
   <!-- ✏️ edit this checkpoint below -->
   <div class="checkpoint"><label><input type="checkbox"><span><span class="tag">You should now see</span> a private channel with your agent in your Filament app. Say <code>hi</code> in it. You should get a short, warm greeting back.</span></label></div>
+  <!-- ✏️ edit this paragraph below -->
+  <p>The 👀 eyes on your message mean the agent got it and is working on a reply.</p>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Then ask it: <strong>what model are you?</strong> If it names the model you picked in step 3, you're fully set. If it names something else, the switch didn't take. See When it breaks, below.</p>
+
+  <!-- ✏️ edit this heading below -->
+  <h2 id="when-it-breaks">When it breaks</h2>
+  <!-- ✏️ edit this paragraph below -->
+  <p>Everything on this list happened live in a workshop. None of it means you broke something.</p>
+  <!-- ✏️ edit this list below -->
+  <ul>
+    <li><strong>Login keeps failing or says canceled.</strong> The terminal reads Ctrl+C as "cancel," so copying with Ctrl+C during a login kills it. Close the terminal, open a fresh one, run <code>hermes model</code> again, and click the link without copying anything on the way.</li>
+    <li><strong>Don't close the terminal window while a login is waiting.</strong> That breaks it too. Same fix: fresh terminal, start over.</li>
+    <li><strong>Terminal login won't go through at all.</strong> You can log in from the Hermes dashboard instead. Open it (the face icon at the top of your agent's page), go to <strong>Keys</strong>, find the OpenAI row, and click <strong>Login</strong> there. Then open <strong>Models</strong> and set the main model.</li>
+    <li><strong>Agent shows connected but never answers.</strong> Open the agent's profile in Filament (top right), click the <strong>⋯</strong> next to Offline, hit <strong>Reconnect</strong>, and paste the new command into your terminal.</li>
+    <li><strong>The app looks different from these screenshots.</strong> Hard refresh: Cmd+R on a Mac, Ctrl+R on a PC.</li>
+    <li><strong>Not sure it worked?</strong> Ask your agent "what model are you?" If it names a model you didn't pick, the brain never switched. Run through step 3 again.</li>
+  </ul>
 
   <div class="pager">
     <a href="0-the-idea.html"><span class="dir">Back</span>Start here: agents, and why Hermes</a>
-    <a href="2-personalize-it.html"><span class="dir">Next</span>Part 2: Personalize it</a>
+    <a href="2-personalize-it.html"><span class="dir">Next</span>Personalize it</a>
   </div>
 
 </div>
-<script src="guide.js?v=20260811a"></script>
+<script src="guide.js?v=20260811b"></script>
 </body>
 </html>

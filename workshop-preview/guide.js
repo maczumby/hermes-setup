@@ -2,12 +2,13 @@
 (function () {
   'use strict';
 
-  var COURSE = [
+  // Pages can override the course map (the invite-only Part 2 page does this
+  // to include its own unlisted URL in the rail).
+  var COURSE = window.GUIDE_COURSE || [
     { href: 'index.html', title: 'Course home', mins: 0, checks: 0, node: '⌂' },
     { href: '0-the-idea.html', title: 'Agents, and why Hermes', mins: 6, checks: 1, node: 'i' },
     { href: '1-stand-it-up.html', title: 'Stand it up', mins: 30, checks: 5, node: '1' },
     { href: '2-personalize-it.html', title: 'Personalize it', mins: 20, checks: 5, node: '2' },
-    { href: '3-relationship-agent.html', title: 'The personal EA + CRM', mins: 75, checks: 3, node: '3' },
   ];
 
   var dir = location.pathname.replace(/[^/]*$/, '');
