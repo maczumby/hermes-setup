@@ -302,3 +302,26 @@ body.gated{overflow:hidden}
 .path.locked:hover{background:none;border-color:transparent}
 .path.locked .node{border-style:dashed}
 .path.locked h3,.path.locked p{color:var(--muted)}
+
+/* ── Course sections: the TOC shows the whole arc ────────────────── */
+.rail-section{
+  list-style:none;margin:14px 0 0;padding:8px 22px 4px 67px;
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
+}
+.rail-item.locked .lk{
+  display:grid;grid-template-columns:24px 1fr;gap:16px;align-items:baseline;
+  padding:11px 22px 11px 27px;color:var(--dim);font-size:14.5px;
+}
+.rail-item.locked .node{border-style:dashed;background:var(--ground)}
+.rail-item.locked .t{display:block;line-height:1.35}
+.rail-item.locked .m{display:block;font-size:11.5px;color:var(--dim);margin-top:1px}
+.paths-section{
+  position:relative;z-index:1;margin:20px 0 2px 40px;
+  font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
+}
+.paths .paths-section:first-child{margin-top:0}
+.pager .pager-locked{
+  display:block;border:1px dashed var(--line);border-radius:12px;
+  padding:14px 20px;color:var(--dim);font-size:15px;max-width:48%;
+  margin-left:auto;text-align:right;
+}

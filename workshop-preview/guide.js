@@ -2,14 +2,26 @@
 (function () {
   'use strict';
 
-  // Pages can override the course map (the invite-only Part 2 page does this
-  // to include its own unlisted URL in the rail).
-  var COURSE = window.GUIDE_COURSE || [
-    { href: 'index.html', title: 'Course home', mins: 0, checks: 0, node: '⌂' },
+  // The full course arc, sections included, shown on every page. Locked rows
+  // render in the rail and on the home cards but are not links, so the
+  // invite-only URL never appears in public markup. The invite-only page sets
+  // window.GUIDE_UNLOCK to its own filename before loading this script, which
+  // turns the locked CRM row into a live link.
+  var COURSE = [
+    { href: 'index.html', title: 'Course home', mins: 0, checks: 0, node: '⌂', section: 'Part 1' },
     { href: '0-the-idea.html', title: 'Agents, and why Hermes', mins: 6, checks: 1, node: 'i' },
     { href: '1-stand-it-up.html', title: 'Stand it up', mins: 30, checks: 5, node: '1' },
     { href: '2-personalize-it.html', title: 'Personalize it', mins: 20, checks: 5, node: '2' },
+    { key: 'crm', title: 'The personal EA + CRM', mins: 75, checks: 3, locked: true, meta: 'in Filament', section: 'Part 2 · by invite' },
+    { title: 'More advanced tools', locked: true, meta: 'coming', section: 'Part 3 · coming' },
   ];
+  if (window.GUIDE_UNLOCK) {
+    COURSE.forEach(function (m) {
+      if (m.key === 'crm') { m.locked = false; m.href = window.GUIDE_UNLOCK; m.node = '★'; m.meta = null; }
+    });
+  }
+  var sec = null;
+  COURSE.forEach(function (m) { if (m.section) sec = m.section; m._section = sec; });
 
   var dir = location.pathname.replace(/[^/]*$/, '');
   var file = location.pathname.slice(dir.length) || 'index.html';
@@ -102,6 +114,7 @@
     else showGate();
   }
   function checkedCount(mod) {
+    if (mod.locked || !mod.href) return 0;
     var page = dir + mod.href;
     var n = 0;
     for (var i = 0; i < mod.checks; i++) {
@@ -111,7 +124,10 @@
   }
   function progress() {
     var done = 0, total = 0;
-    COURSE.forEach(function (m) { total += m.checks; done += checkedCount(m); });
+    COURSE.forEach(function (m) {
+      if (m.locked || !m.href) return;
+      total += m.checks; done += checkedCount(m);
+    });
     return { done: done, total: total, pct: total ? Math.round(done / total * 100) : 0 };
   }
 
@@ -133,21 +149,38 @@
     '<div class="rail-foot">Stuck? Raise your hand.<br>Or send us a message in Filament.</div>';
 
   var nav = rail.querySelector('.rail-nav');
+  var railItems = [];
+  var lastRailSection = null;
   COURSE.forEach(function (mod, idx) {
+    if (mod._section && mod._section !== lastRailSection) {
+      lastRailSection = mod._section;
+      var lab = document.createElement('li');
+      lab.className = 'rail-section';
+      lab.textContent = mod._section;
+      nav.appendChild(lab);
+    }
     var li = document.createElement('li');
     li.className = 'rail-item';
-    var got = checkedCount(mod);
-    if (mod.checks && got === mod.checks) li.classList.add('done');
-    else if (got > 0) li.classList.add('lit');
-    if (mod.href === file) li.classList.add('here');
-    var label = mod.node || String(idx);
-    var meta = mod.checks
-      ? (got + '/' + mod.checks)
-      : 'start here';
-    li.innerHTML =
-      '<a href="' + mod.href + '"><span class="node">' + label + '</span>' +
-      '<span><span class="t">' + mod.title + '</span><span class="m">' + meta + '</span></span></a>';
+    if (mod.locked) {
+      li.classList.add('locked');
+      li.innerHTML =
+        '<span class="lk"><span class="node"></span>' +
+        '<span><span class="t">' + mod.title + '</span><span class="m">' + (mod.meta || '') + '</span></span></span>';
+    } else {
+      var got = checkedCount(mod);
+      if (mod.checks && got === mod.checks) li.classList.add('done');
+      else if (got > 0) li.classList.add('lit');
+      if (mod.href === file) li.classList.add('here');
+      var label = mod.node || String(idx);
+      var meta = mod.checks
+        ? (got + '/' + mod.checks)
+        : 'start here';
+      li.innerHTML =
+        '<a href="' + mod.href + '"><span class="node">' + label + '</span>' +
+        '<span><span class="t">' + mod.title + '</span><span class="m">' + meta + '</span></span></a>';
+    }
     nav.appendChild(li);
+    railItems.push(li);
   });
 
   var topbar = document.createElement('div');
@@ -174,13 +207,18 @@
     var p = progress();
     document.querySelectorAll('.bar i').forEach(function (i) { i.style.width = p.pct + '%'; });
     var label = rail.querySelector('.bar-label');
-    label.textContent = p.done + ' of ' + p.total + ' checkpoints · ' + p.pct + '%';
+    var scope = window.GUIDE_UNLOCK ? 'Parts 1–2' : 'Part 1';
+    label.textContent = p.done + ' of ' + p.total + ' checkpoints · ' + scope;
     COURSE.forEach(function (mod, idx) {
-      var li = nav.children[idx];
+      var li = railItems[idx];
+      if (!li || mod.locked || !mod.href) return;
       var got = checkedCount(mod);
       li.classList.toggle('done', mod.checks > 0 && got === mod.checks);
       li.classList.toggle('lit', got > 0 && got < mod.checks);
-      if (mod.checks) li.querySelector('.m').textContent = got + '/' + mod.checks;
+      if (mod.checks) {
+        var m = li.querySelector('.m');
+        if (m) m.textContent = got + '/' + mod.checks;
+      }
     });
   }
 
@@ -194,16 +232,22 @@
   scrim.addEventListener('click', function () { setNav(false); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setNav(false); });
 
-  // Module meta under the kicker on lesson pages
+  // Module meta under the kicker on lesson pages. Numbered modules get
+  // "Module N of X" (counted within Part 1); the intro gets "Read this first";
+  // the invite-only Part 2 page gets neither.
   if (current && current.checks) {
     var kicker = wrap.querySelector('header .kicker');
-    if (kicker) {
-      var numberedTotal = COURSE.filter(function (m) { return /^\d+$/.test(m.node || ''); }).length;
+    var metaText = null;
+    if (/^\d+$/.test(current.node || '')) {
+      var numberedTotal = COURSE.filter(function (m) { return !m.locked && /^\d+$/.test(m.node || ''); }).length;
+      metaText = 'Module ' + current.node + ' of ' + numberedTotal;
+    } else if (current.node === 'i') {
+      metaText = 'Read this first';
+    }
+    if (kicker && metaText) {
       var meta = document.createElement('p');
       meta.className = 'module-meta';
-      meta.textContent = /^\d+$/.test(current.node || '')
-        ? 'Module ' + current.node + ' of ' + numberedTotal
-        : 'Read this first';
+      meta.textContent = metaText;
       kicker.insertAdjacentElement('afterend', meta);
     }
   }
@@ -214,17 +258,26 @@
     if (d && /next|done/i.test(d.textContent)) a.classList.add('next');
   });
 
-  // Course home: continue card + node decoration on the module list
+  // Course home: node decoration + the same section grouping as the rail,
+  // so the module list and the TOC tell one story.
   if (file === 'index.html' || file === '') {
     var paths = document.querySelectorAll('.paths .path');
+    var lastCardSection = null;
     paths.forEach(function (card, i) {
       var mod = COURSE[i + 1];
       if (!mod) return;
+      if (mod._section && mod._section !== lastCardSection) {
+        lastCardSection = mod._section;
+        var head = document.createElement('div');
+        head.className = 'paths-section';
+        head.textContent = mod._section;
+        card.parentNode.insertBefore(head, card);
+      }
       var node = document.createElement('span');
       node.className = 'node';
-      node.textContent = mod.node || String(i + 1);
+      node.textContent = mod.locked ? '' : (mod.node || String(i + 1));
       card.insertBefore(node, card.firstChild);
-      if (checkedCount(mod) === mod.checks) card.classList.add('done');
+      if (!mod.locked && mod.checks && checkedCount(mod) === mod.checks) card.classList.add('done');
     });
   }
 
